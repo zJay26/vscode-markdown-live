@@ -1,0 +1,10 @@
+node_modules/
+dist/
+artifacts/
+test-results/
+playwright-report/
+.vscode-test/
+.local-test/
+.env
+.env.*
+!.env.example

@@ -1,0 +1,11 @@
+**/*
+!dist/extension.cjs
+!dist/extension.cjs.map
+!dist/THIRD_PARTY_NOTICES.txt
+!dist/webview/**
+!package.json
+!README.md
+!LICENSE
+!CHANGELOG.md
+!VALIDATION.md
+!docs/images/editor-light.png

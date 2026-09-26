@@ -1,0 +1,70 @@
+{
+  "name": "markdown-live",
+  "displayName": "Markdown Live",
+  "description": "直接在渲染后的 Markdown 中编辑，支持局部源码、公式、图表和脚注。",
+  "version": "0.2.0",
+  "publisher": "markdown-live-local",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "https://github.com/zJay26/vscode-markdown-preview.git" },
+  "homepage": "https://github.com/zJay26/vscode-markdown-preview#readme",
+  "bugs": { "url": "https://github.com/zJay26/vscode-markdown-preview/issues" },
+  "engines": { "vscode": "^1.96.0" },
+  "categories": ["Other"],
+  "main": "./dist/extension.cjs",
+  "extensionKind": ["workspace"],
+  "activationEvents": ["onCustomEditor:markdownLive.editor"],
+  "contributes": {
+    "customEditors": [{ "viewType": "markdownLive.editor", "displayName": "Markdown Live", "selector": [{ "filenamePattern": "*.md" }, { "filenamePattern": "*.markdown" }], "priority": "option" }],
+    "commands": [
+      { "command": "markdownLive.open", "title": "Markdown Live: 打开可视化编辑" },
+      { "command": "markdownLive.source", "title": "Markdown Live: 打开对应源码" }
+    ],
+    "menus": { "editor/title": [{ "command": "markdownLive.open", "when": "resourceLangId == markdown", "group": "navigation" }] },
+    "configuration": {
+      "title": "Markdown Live",
+      "properties": {
+        "markdownLive.fontSize": { "type": "number", "default": 16, "minimum": 12, "maximum": 32, "description": "正文字号（px）" },
+        "markdownLive.lineHeight": { "type": "number", "default": 1.7, "minimum": 1.2, "maximum": 2.5, "description": "正文行高" },
+        "markdownLive.contentWidth": { "type": "number", "default": 900, "minimum": 480, "maximum": 1600, "description": "正文最大宽度（px）" },
+        "markdownLive.assetsDirectory": { "type": "string", "default": "assets/${documentName}", "description": "相对于文档的图片目录；${documentName} 为不含扩展名的文档名" }
+      }
+    }
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "vite --host 127.0.0.1",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "test:host": "node scripts/host-test.mjs",
+    "package": "npm run build && node scripts/package.mjs"
+  },
+  "dependencies": {
+    "@milkdown/kit": "^7.17.1",
+    "@codemirror/commands": "^6.8.1",
+    "@codemirror/lang-markdown": "^6.3.3",
+    "@codemirror/state": "^6.5.2",
+    "@codemirror/view": "^6.36.8",
+    "katex": "^0.16.22",
+    "mermaid": "^11.6.0",
+    "prosemirror-tables": "^1.7.1",
+    "remark-frontmatter": "^5.0.0",
+    "remark-gfm": "^4.0.1",
+    "remark-math": "^6.0.0",
+    "remark-parse": "^11.0.0",
+    "remark-stringify": "^11.0.0",
+    "unified": "^11.0.5"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "@types/katex": "^0.16.7",
+    "@types/node": "^22.15.0",
+    "@types/vscode": "1.96.0",
+    "@vscode/test-electron": "^2.5.2",
+    "@vscode/vsce": "^3.4.2",
+    "esbuild": "^0.25.4",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vitest": "^3.1.3"
+  }
+}
