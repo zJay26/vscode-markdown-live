@@ -4,8 +4,7 @@
   </a>
 </p>
 
-<h1 align="center">Markdown Live</h1>
-<p align="center"><sub>by <a href="https://github.com/zJay26">zJay</a></sub></p>
+<h1 align="center">Markdown Live<sub><sub><p align="right"><sup>by zJay</sup></p></sub></sub></h1>
 
 <p align="center">
   <strong>Write in the rendered page. Keep the freedom of Markdown.</strong><br />
