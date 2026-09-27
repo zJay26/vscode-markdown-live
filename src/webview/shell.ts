@@ -7,7 +7,7 @@ const focus = icon('<path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/>');
 
 export const editorShell = `
   <header class="toolbar">
-    <div class="identity" title="Markdown Live · by zJay"><img class="brand-mark" src="${brandIcon}" width="44" height="44" alt="" aria-hidden="true" draggable="false"><div class="document-identity"><span id="document-name">Markdown Live</span><span class="identity-caption">Markdown Live · by zJay</span></div></div>
+    <div class="identity" title="Markdown Live"><img class="brand-mark" src="${brandIcon}" width="44" height="44" alt="" aria-hidden="true" draggable="false"><div class="document-identity"><span id="document-name">Markdown Live</span><span class="identity-caption">Markdown Live</span></div></div>
     <nav aria-label="文档工具">
       <button data-action="outline" aria-expanded="false" aria-controls="outline" title="章节大纲 (Ctrl+Shift+O)">${outline}<span>大纲</span></button>
       <button data-action="insert" title="插入内容，也可在空段落输入 /" aria-haspopup="menu">＋ 插入</button>

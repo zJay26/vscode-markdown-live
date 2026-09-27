@@ -1,4 +1,4 @@
-# Markdown Live · by zJay 品牌资源
+# Markdown Live 品牌资源
 
 `markdown-live-icon.png` 是 C1 品牌原图（1254 × 1254），保留所选图像的像素内容。柔和的 Z、MD 与正文选区分别表达个人标识、Markdown 和所见即所得编辑。
 

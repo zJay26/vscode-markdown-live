@@ -5,8 +5,8 @@
 需要 Node.js 22+、npm，以及 VS Code 1.96 或更高版本（已验证的宿主版本为 1.96.3）。
 
 ```sh
-git clone https://github.com/zJay26/vscode-markdown-preview.git
-cd vscode-markdown-preview
+git clone https://github.com/zJay26/vscode-markdown-live.git
+cd vscode-markdown-live
 npm ci
 npm run typecheck
 npm test
@@ -41,3 +41,5 @@ npm run package
 GitHub Actions 在 Linux / Node.js 22 中运行依赖安装、类型检查、核心测试和生产构建。浏览器交互、Windows / Remote WSL 宿主及安装包验证需要相应环境，CI 成功不替代这些检查。
 
 修改提交前请参考[贡献指南](../CONTRIBUTING.md)。独立浏览器预览和截图不会证明 VS Code 文件保存或 Remote WSL 行为。
+
+准备发布时，按[发布与更新](releasing.md)完成版本号、提交推送、商店校验和安装验证。

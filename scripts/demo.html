@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Markdown Live — 功能演示</title>
+<style>
+/* Documentation capture only: keep source readable when a GIF is scaled in README. */
+#app .cm-editor { font-size: 22px !important; line-height: 1.55; }
+</style>
+<div id="app"></div>
+<script type="module">
+// Documentation fixture only. Uses the real editor, with a public sample document.
+// This file is excluded from both the production Vite entry and VSIX.
+import '/src/webview/main.ts';
+const samples = {
+  writing: '# 把想法写下来\n\n直接在正文中编辑，让思路留在文字里。\n\n## 今日计划\n\n- [ ] 整理研究笔记\n- [ ] 完成第一版草稿\n\n> 文件仍然是普通 Markdown。\n',
+  source: '# 排版与源码，随时切换\n\n需要精确控制时，只展开当前段落。\n\n这一段保留排版视图，让你专注于眼前的修改。\n',
+  math: '# 技术笔记，也能直接改\n\n## 写下一个公式\n\n$$\nE = mc^2\n$$\n\n## 梳理一个流程\n\n```mermaid\nflowchart LR\n A[阅读] --> B[编辑]\n B --> C[保存]\n```\n',
+};
+const key = new URLSearchParams(location.search).get('scene') || 'writing';
+const text = samples[key] || samples.writing;
+function start() {
+  if (!window.markdownLiveTest) return requestAnimationFrame(start);
+  window.markdownLiveTest.setDocument(text);
+  window.dispatchEvent(new MessageEvent('message', {data:{type:'document', text, version:2, name:'写作笔记.md', dirty:false, settings:{fontSize:22,lineHeight:1.8,contentWidth:940,assetsDirectory:'assets/${documentName}'}}}));
+}
+requestAnimationFrame(start);
+</script>
+</html>

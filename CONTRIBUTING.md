@@ -1,11 +1,11 @@
 # 参与 Markdown Live
 
-感谢你帮助改进 Markdown Live · by zJay。中文和 English 的问题描述都欢迎。
+感谢你帮助改进 Markdown Live。中文和 English 的问题描述都欢迎。
 
 ## 提交问题或建议
 
-- [Bug report](https://github.com/zJay26/vscode-markdown-preview/issues/new?template=bug_report.yml)：说明版本、环境、操作步骤、预期与实际结果，最好附一份最小 Markdown 示例。
-- [Feature request](https://github.com/zJay26/vscode-markdown-preview/issues/new?template=feature_request.yml)：描述写作时遇到的具体问题，以及你希望完成的操作。
+- [Bug report](https://github.com/zJay26/vscode-markdown-live/issues/new?template=bug_report.yml)：说明版本、环境、操作步骤、预期与实际结果，最好附一份最小 Markdown 示例。
+- [Feature request](https://github.com/zJay26/vscode-markdown-live/issues/new?template=feature_request.yml)：描述写作时遇到的具体问题，以及你希望完成的操作。
 
 涉及文档时，请用可公开的最小示例替代私人内容。文件保存、外部修改和 Remote WSL 问题，请注明发生在浏览器预览、源码调试还是已安装的 VSIX 中。
 

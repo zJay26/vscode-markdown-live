@@ -1,0 +1,453 @@
+{
+  "capturedAt": "2026-09-27",
+  "extensionVersion": "0.2.5",
+  "capture": "Real editor in the browser development fixture; screenshots retimed for readable demonstrations.",
+  "clips": [
+    {
+      "name": "writing",
+      "title": "直接在排版后的正文里写作",
+      "file": "writing.gif",
+      "width": 1280,
+      "height": 776,
+      "seconds": 12.78,
+      "sourceFrames": 27,
+      "bytes": 253993,
+      "frames": [
+        {
+          "index": 55,
+          "duration": 1.8,
+          "caption": "直接在正文中输入"
+        },
+        {
+          "index": 56,
+          "duration": 0.24,
+          "caption": "直接在正文中输入"
+        },
+        {
+          "index": 57,
+          "duration": 0.24,
+          "caption": "直接在正文中输入"
+        },
+        {
+          "index": 58,
+          "duration": 0.24,
+          "caption": "直接在正文中输入"
+        },
+        {
+          "index": 59,
+          "duration": 0.24,
+          "caption": "直接在正文中输入"
+        },
+        {
+          "index": 60,
+          "duration": 0.24,
+          "caption": "直接在正文中输入"
+        },
+        {
+          "index": 61,
+          "duration": 0.24,
+          "caption": "直接在正文中输入"
+        },
+        {
+          "index": 62,
+          "duration": 0.24,
+          "caption": "直接在正文中输入"
+        },
+        {
+          "index": 63,
+          "duration": 0.24,
+          "caption": "直接在正文中输入"
+        },
+        {
+          "index": 64,
+          "duration": 0.24,
+          "caption": "直接在正文中输入"
+        },
+        {
+          "index": 65,
+          "duration": 0.24,
+          "caption": "直接在正文中输入"
+        },
+        {
+          "index": 66,
+          "duration": 0.24,
+          "caption": "直接在正文中输入"
+        },
+        {
+          "index": 67,
+          "duration": 0.24,
+          "caption": "直接在正文中输入"
+        },
+        {
+          "index": 68,
+          "duration": 1.2,
+          "caption": "选中文字，应用排版"
+        },
+        {
+          "index": 69,
+          "duration": 0.16,
+          "caption": "选中文字，应用排版"
+        },
+        {
+          "index": 70,
+          "duration": 0.16,
+          "caption": "选中文字，应用排版"
+        },
+        {
+          "index": 71,
+          "duration": 0.16,
+          "caption": "选中文字，应用排版"
+        },
+        {
+          "index": 72,
+          "duration": 0.16,
+          "caption": "选中文字，应用排版"
+        },
+        {
+          "index": 73,
+          "duration": 0.16,
+          "caption": "选中文字，应用排版"
+        },
+        {
+          "index": 74,
+          "duration": 0.16,
+          "caption": "选中文字，应用排版"
+        },
+        {
+          "index": 75,
+          "duration": 0.16,
+          "caption": "选中文字，应用排版"
+        },
+        {
+          "index": 76,
+          "duration": 0.16,
+          "caption": "选中文字，应用排版"
+        },
+        {
+          "index": 77,
+          "duration": 0.16,
+          "caption": "选中文字，应用排版"
+        },
+        {
+          "index": 78,
+          "duration": 0.16,
+          "caption": "选中文字，应用排版"
+        },
+        {
+          "index": 79,
+          "duration": 0.9,
+          "caption": "选中文字，应用排版"
+        },
+        {
+          "index": 80,
+          "duration": 1.8,
+          "caption": "点击加粗，即时看到结果"
+        },
+        {
+          "index": 81,
+          "duration": 2.6,
+          "caption": "点击加粗，即时看到结果"
+        }
+      ]
+    },
+    {
+      "name": "source",
+      "title": "只展开需要修改的那一段",
+      "file": "source.gif",
+      "width": 1280,
+      "height": 776,
+      "seconds": 13.6,
+      "sourceFrames": 27,
+      "bytes": 223061,
+      "frames": [
+        {
+          "file": "source-v2-000.jpg",
+          "duration": 1.8,
+          "caption": "点击段落，打开局部源码"
+        },
+        {
+          "file": "source-v2-001.jpg",
+          "duration": 0.7,
+          "caption": "点击段落，打开局部源码"
+        },
+        {
+          "file": "source-v2-002.jpg",
+          "duration": 2,
+          "caption": "其余正文保持排版视图"
+        },
+        {
+          "file": "source-v2-003.jpg",
+          "duration": 0.8,
+          "caption": "在当前段落中编辑 Markdown"
+        },
+        {
+          "file": "source-v2-004.jpg",
+          "duration": 0.2,
+          "caption": "在当前段落中编辑 Markdown"
+        },
+        {
+          "file": "source-v2-005.jpg",
+          "duration": 0.2,
+          "caption": "在当前段落中编辑 Markdown"
+        },
+        {
+          "file": "source-v2-006.jpg",
+          "duration": 0.2,
+          "caption": "在当前段落中编辑 Markdown"
+        },
+        {
+          "file": "source-v2-007.jpg",
+          "duration": 0.2,
+          "caption": "在当前段落中编辑 Markdown"
+        },
+        {
+          "file": "source-v2-008.jpg",
+          "duration": 0.2,
+          "caption": "在当前段落中编辑 Markdown"
+        },
+        {
+          "file": "source-v2-009.jpg",
+          "duration": 0.2,
+          "caption": "在当前段落中编辑 Markdown"
+        },
+        {
+          "file": "source-v2-010.jpg",
+          "duration": 0.2,
+          "caption": "在当前段落中编辑 Markdown"
+        },
+        {
+          "file": "source-v2-011.jpg",
+          "duration": 0.2,
+          "caption": "在当前段落中编辑 Markdown"
+        },
+        {
+          "file": "source-v2-012.jpg",
+          "duration": 0.2,
+          "caption": "在当前段落中编辑 Markdown"
+        },
+        {
+          "file": "source-v2-013.jpg",
+          "duration": 0.2,
+          "caption": "在当前段落中编辑 Markdown"
+        },
+        {
+          "file": "source-v2-014.jpg",
+          "duration": 0.2,
+          "caption": "在当前段落中编辑 Markdown"
+        },
+        {
+          "file": "source-v2-015.jpg",
+          "duration": 0.2,
+          "caption": "在当前段落中编辑 Markdown"
+        },
+        {
+          "file": "source-v2-016.jpg",
+          "duration": 0.2,
+          "caption": "在当前段落中编辑 Markdown"
+        },
+        {
+          "file": "source-v2-017.jpg",
+          "duration": 0.2,
+          "caption": "在当前段落中编辑 Markdown"
+        },
+        {
+          "file": "source-v2-018.jpg",
+          "duration": 0.2,
+          "caption": "在当前段落中编辑 Markdown"
+        },
+        {
+          "file": "source-v2-019.jpg",
+          "duration": 0.2,
+          "caption": "在当前段落中编辑 Markdown"
+        },
+        {
+          "file": "source-v2-020.jpg",
+          "duration": 0.2,
+          "caption": "在当前段落中编辑 Markdown"
+        },
+        {
+          "file": "source-v2-021.jpg",
+          "duration": 0.2,
+          "caption": "在当前段落中编辑 Markdown"
+        },
+        {
+          "file": "source-v2-022.jpg",
+          "duration": 0.2,
+          "caption": "在当前段落中编辑 Markdown"
+        },
+        {
+          "file": "source-v2-023.jpg",
+          "duration": 0.2,
+          "caption": "在当前段落中编辑 Markdown"
+        },
+        {
+          "file": "source-v2-024.jpg",
+          "duration": 0.2,
+          "caption": "在当前段落中编辑 Markdown"
+        },
+        {
+          "file": "source-v2-025.jpg",
+          "duration": 1.5,
+          "caption": "编辑完成，返回排版"
+        },
+        {
+          "file": "source-v2-026.jpg",
+          "duration": 2.6,
+          "caption": "编辑完成，返回排版"
+        }
+      ]
+    },
+    {
+      "name": "math-diagram",
+      "title": "公式与流程图，边改边看",
+      "file": "math-diagram.gif",
+      "width": 1280,
+      "height": 776,
+      "seconds": 19.68,
+      "sourceFrames": 28,
+      "bytes": 370830,
+      "frames": [
+        {
+          "file": "math-v2-000.jpg",
+          "duration": 1.8,
+          "caption": "点击公式，编辑 LaTeX"
+        },
+        {
+          "file": "math-v2-001.jpg",
+          "duration": 1.5,
+          "caption": "点击公式，编辑 LaTeX"
+        },
+        {
+          "file": "math-v2-002.jpg",
+          "duration": 0.7,
+          "caption": "输入公式，即时预览"
+        },
+        {
+          "file": "math-v2-003.jpg",
+          "duration": 0.16,
+          "caption": "输入公式，即时预览"
+        },
+        {
+          "file": "math-v2-004.jpg",
+          "duration": 0.16,
+          "caption": "输入公式，即时预览"
+        },
+        {
+          "file": "math-v2-005.jpg",
+          "duration": 0.16,
+          "caption": "输入公式，即时预览"
+        },
+        {
+          "file": "math-v2-006.jpg",
+          "duration": 0.16,
+          "caption": "输入公式，即时预览"
+        },
+        {
+          "file": "math-v2-007.jpg",
+          "duration": 0.16,
+          "caption": "输入公式，即时预览"
+        },
+        {
+          "file": "math-v2-008.jpg",
+          "duration": 0.16,
+          "caption": "输入公式，即时预览"
+        },
+        {
+          "file": "math-v2-009.jpg",
+          "duration": 0.16,
+          "caption": "输入公式，即时预览"
+        },
+        {
+          "file": "math-v2-010.jpg",
+          "duration": 0.16,
+          "caption": "输入公式，即时预览"
+        },
+        {
+          "file": "math-v2-011.jpg",
+          "duration": 0.16,
+          "caption": "输入公式，即时预览"
+        },
+        {
+          "file": "math-v2-012.jpg",
+          "duration": 0.16,
+          "caption": "输入公式，即时预览"
+        },
+        {
+          "file": "math-v2-013.jpg",
+          "duration": 0.16,
+          "caption": "输入公式，即时预览"
+        },
+        {
+          "file": "math-v2-014.jpg",
+          "duration": 0.16,
+          "caption": "输入公式，即时预览"
+        },
+        {
+          "file": "math-v2-015.jpg",
+          "duration": 0.16,
+          "caption": "输入公式，即时预览"
+        },
+        {
+          "file": "math-v2-016.jpg",
+          "duration": 0.16,
+          "caption": "输入公式，即时预览"
+        },
+        {
+          "file": "math-v2-017.jpg",
+          "duration": 0.16,
+          "caption": "输入公式，即时预览"
+        },
+        {
+          "file": "math-v2-018.jpg",
+          "duration": 1.4,
+          "caption": "输入公式，即时预览"
+        },
+        {
+          "file": "math-v2-019.jpg",
+          "duration": 1.8,
+          "caption": "确认公式，继续编辑图表"
+        },
+        {
+          "file": "math-v2-020.jpg",
+          "duration": 1.2,
+          "caption": "确认公式，继续编辑图表"
+        },
+        {
+          "file": "math-v2-021.jpg",
+          "duration": 1.6,
+          "caption": "展开 Mermaid，修改节点文字"
+        },
+        {
+          "file": "math-v2-022.jpg",
+          "duration": 0.4,
+          "caption": "展开 Mermaid，修改节点文字"
+        },
+        {
+          "file": "math-v2-023.jpg",
+          "duration": 0.8,
+          "caption": "展开 Mermaid，修改节点文字"
+        },
+        {
+          "file": "math-v2-024.jpg",
+          "duration": 0.28,
+          "caption": "展开 Mermaid，修改节点文字"
+        },
+        {
+          "file": "math-v2-025.jpg",
+          "duration": 1.4,
+          "caption": "图表自动刷新"
+        },
+        {
+          "file": "math-v2-026.jpg",
+          "duration": 1.8,
+          "caption": "图表自动刷新"
+        },
+        {
+          "file": "math-v2-027.jpg",
+          "duration": 2.6,
+          "caption": "完成修改，回到阅读视图"
+        }
+      ]
+    }
+  ]
+}

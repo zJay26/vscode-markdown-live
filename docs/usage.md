@@ -4,13 +4,13 @@
 
 ## 安装和打开
 
-1. 在 VS Code 扩展面板搜索 `@id:zJay.markdown-live-zjay`，或打开 [Visual Studio Marketplace 页面](https://marketplace.visualstudio.com/items?itemName=zJay.markdown-live-zjay) 安装。也可在扩展菜单中选择 **Install from VSIX…** 安装本地构建的 `artifacts/markdown-live-zjay-0.2.4.vsix`。[GitHub Releases](https://github.com/zJay26/vscode-markdown-preview/releases/latest) 目前保留旧版 0.2.0；获取当前版本请优先使用 Marketplace，或从源码构建。
-2. 打开 `.md` 或 `.markdown` 文件，点击编辑器标题栏最左侧蓝色 **Z／MD 文档**图标（**Markdown Live · by zJay: 打开可视化编辑**），或在源码编辑器中按 **Ctrl+Shift+V**（macOS：**⌘+Shift+V**）。也可右键编辑器标签 → **Reopen Editor With… → Markdown Live · by zJay**。
+1. 在 VS Code 扩展面板搜索 `@id:zJay.markdown-live-zjay`，或打开 [Visual Studio Marketplace 页面](https://marketplace.visualstudio.com/items?itemName=zJay.markdown-live-zjay) 安装。也可在扩展菜单中选择 **Install from VSIX…** 安装本地构建的 `artifacts/markdown-live-zjay-<版本号>.vsix`。[GitHub Releases](https://github.com/zJay26/vscode-markdown-live/releases/latest) 目前保留旧版 0.2.0；获取当前版本请优先使用 Marketplace，或从源码构建。
+2. 打开 `.md` 或 `.markdown` 文件，点击编辑器标题栏最左侧蓝色 **Z／MD 文档**图标（**Markdown Live: 打开可视化编辑**），或在源码编辑器中按 **Ctrl+Shift+V**（macOS：**⌘+Shift+V**）。也可右键编辑器标签 → **Reopen Editor With… → Markdown Live**。
 3. 直接点击正文开始修改。插件不会自动更改已有的默认编辑器关联；可在 Reopen Editor With 菜单中自行设为默认。
 
 Remote WSL：在 WSL 窗口中安装同一 VSIX。插件运行在 workspace 扩展宿主，图片保存在 Markdown 所在的 WSL 文件系统中，不会写入同名 Windows 路径。
 
-无需安装其他第三方 Markdown 扩展。扩展 ID 为 `zJay.markdown-live-zjay`；若标题栏入口消失，先确认当前 VS Code 配置及本地 / WSL 环境中仍安装并启用了 Markdown Live · by zJay。也可在资源管理器右键 Markdown 文件，或用命令面板执行 **Markdown Live · by zJay: 打开可视化编辑**。标题栏入口同时按 Markdown 语言及 `.md` / `.markdown` 后缀识别文件。
+无需安装其他第三方 Markdown 扩展。扩展 ID 为 `zJay.markdown-live-zjay`；若标题栏入口消失，先确认当前 VS Code 配置及本地 / WSL 环境中仍安装并启用了 Markdown Live。也可在资源管理器右键 Markdown 文件，或用命令面板执行 **Markdown Live: 打开可视化编辑**。标题栏入口同时按 Markdown 语言及 `.md` / `.markdown` 后缀识别文件。
 
 **从旧本地版迁移：** 0.2.3 及更早版本使用 `markdown-live-local.markdown-live`，不会作为同一扩展自动更新为商店版。请安装 `zJay.markdown-live-zjay`，并禁用或卸载旧版，避免命令和入口重复；Windows 与 Remote WSL 环境分别处理。Markdown 文件与图片无需转换，`markdownLive.*` 设置键和 `markdownLive.editor` 编辑器关联保持不变。
 

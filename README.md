@@ -1,10 +1,11 @@
 <p align="center">
   <a href="https://marketplace.visualstudio.com/items?itemName=zJay.markdown-live-zjay">
-    <img src="https://raw.githubusercontent.com/zJay26/vscode-markdown-preview/main/media/markdown-live-icon.png" width="144" height="144" alt="Markdown Live：柔和的 Z、MD 与正文选区" />
+    <img src="https://raw.githubusercontent.com/zJay26/vscode-markdown-live/main/media/markdown-live-icon.png" width="144" height="144" alt="Markdown Live：柔和的 Z、MD 与正文选区" />
   </a>
 </p>
 
-<h1 align="center">Markdown Live · by zJay</h1>
+<h1 align="center">Markdown Live</h1>
+<p align="center"><sub>by <a href="https://github.com/zJay26">zJay</a></sub></p>
 
 <p align="center">
   <strong>看见文字的样子，也保有源码的自由。</strong><br />
@@ -13,7 +14,7 @@
 
 <p align="center">
   <a href="https://marketplace.visualstudio.com/items?itemName=zJay.markdown-live-zjay"><img src="https://img.shields.io/badge/Marketplace-install-2767df?style=flat-square" alt="从 Marketplace 安装" /></a>
-  <a href="https://github.com/zJay26/vscode-markdown-preview/actions/workflows/ci.yml"><img src="https://github.com/zJay26/vscode-markdown-preview/actions/workflows/ci.yml/badge.svg" alt="类型检查、核心测试与构建" /></a>
+  <a href="https://github.com/zJay26/vscode-markdown-live/actions/workflows/ci.yml"><img src="https://github.com/zJay26/vscode-markdown-live/actions/workflows/ci.yml/badge.svg" alt="类型检查、核心测试与构建" /></a>
   <img src="https://img.shields.io/badge/VS_Code-1.96%2B-2767df?style=flat-square" alt="VS Code 1.96 或更高" />
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-23956f?style=flat-square" alt="MIT License" /></a>
 </p>
@@ -21,34 +22,46 @@
 <p align="center">
   <strong>简体中文</strong> · <a href="README.en.md">English</a><br />
   <a href="https://marketplace.visualstudio.com/items?itemName=zJay.markdown-live-zjay"><strong>安装扩展</strong></a> ·
-  <a href="#界面预览">界面预览</a> ·
+  <a href="#功能演示">功能演示</a> ·
   <a href="docs/usage.md">使用指南</a> ·
   <a href="CHANGELOG.md">更新记录</a> ·
-  <a href="https://github.com/zJay26/vscode-markdown-preview/issues/new/choose">反馈问题</a>
+  <a href="https://github.com/zJay26/vscode-markdown-live/issues/new/choose">反馈问题</a>
 </p>
 
-## 界面预览
+## 功能演示
 
-**读到哪里，就改到哪里。** 直接选中排版后的正文、修改表格、调整公式；需要精确控制标记时，只展开当前段落的源码。
+### 直接写在排版后的正文里
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/zJay26/vscode-markdown-preview/main/docs/images/editor-dark.png" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/zJay26/vscode-markdown-preview/main/docs/images/editor-light.png" />
-  <img src="https://raw.githubusercontent.com/zJay26/vscode-markdown-preview/main/docs/images/editor-light.png" alt="Markdown Live 实际界面：选中正文直接排版，左侧大纲导航，下方包含公式、表格与任务清单" />
-</picture>
+输入一句话，选中文字，再点击加粗。常用编辑直接发生在你正在阅读的位置。
 
-<p align="center"><sub>正文编辑 · 选区工具栏 · 章节大纲 · 明暗主题</sub></p>
+![直接编辑正文、选中文字并应用粗体](https://raw.githubusercontent.com/zJay26/vscode-markdown-live/main/docs/demo/writing.gif)
+
+### 需要源码时，只展开这一段
+
+打开段落源码，修改 Markdown 标记，再返回排版。周围的内容始终保留阅读状态。
+
+![展开段落源码、修改 Markdown 并返回排版](https://raw.githubusercontent.com/zJay26/vscode-markdown-live/main/docs/demo/source.gif)
+
+### 公式与流程图，边改边看
+
+点击公式或图表，就地调整 LaTeX / Mermaid。修改完成后回到正文，继续写作。
+
+![就地编辑 LaTeX 公式与 Mermaid 流程图](https://raw.githubusercontent.com/zJay26/vscode-markdown-live/main/docs/demo/math-diagram.gif)
+
+<sub>动图录自真实编辑界面的独立浏览器预览，使用公开示例文档；文字放大显示，保留输入及阅读停顿。浏览器预览不写入工作区文件，VS Code 宿主验证范围见 [验证记录](VALIDATION.md)。</sub>
 
 <details>
-<summary><strong>需要源码时，只展开这一段</strong></summary>
+<summary>明暗主题静态预览</summary>
 
-点击“段落源码”或按 `Ctrl+Shift+M`，就地修改 Markdown。按 `Esc` / `Ctrl+Enter` 回到排版，整篇源码也可在旁边的原生编辑器中打开。
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/zJay26/vscode-markdown-live/main/docs/images/editor-dark.png" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/zJay26/vscode-markdown-live/main/docs/images/editor-light.png" />
+  <img src="https://raw.githubusercontent.com/zJay26/vscode-markdown-live/main/docs/images/editor-light.png" alt="Markdown Live 静态预览：正文选区、大纲、公式、表格与任务清单" />
+</picture>
 
-![段落源码直接嵌入正文，周围仍保持排版视图](https://raw.githubusercontent.com/zJay26/vscode-markdown-preview/main/docs/images/inline-source.png)
+<sub>静态截图来自 0.2.4，图标和编辑功能一致；新版显示名称已简化为 Markdown Live。</sub>
 
 </details>
-
-<sub>截图来自 0.2.4 真实 Webview 的独立浏览器预览，使用示例文档；不包含私人文件。VS Code 宿主与安装包的验证范围见 [验证记录](VALIDATION.md)。</sub>
 
 ## 三步开始写作
 
@@ -66,7 +79,7 @@ Windows 与 Remote WSL 均可使用；WSL 窗口需在对应环境安装扩展�
 
 > **从旧本地版迁移：** `markdown-live-local.markdown-live` 与商店版是不同扩展。安装新版后，请禁用或卸载旧版，避免入口重复。Markdown 文件、图片和 `markdownLive.*` 设置无需转换。详见[安装与使用](docs/usage.md)。
 
-当前商店版与源码版本为 **0.2.4**。[GitHub Releases](https://github.com/zJay26/vscode-markdown-preview/releases/latest) 目前保留历史 **0.2.0**；获取当前版本请优先使用商店，或[从源码构建 VSIX](docs/development.md)。
+最新公开版本以 [Marketplace 页面](https://marketplace.visualstudio.com/items?itemName=zJay.markdown-live-zjay) 为准，源码版本见 [package.json](package.json)。[GitHub Releases](https://github.com/zJay26/vscode-markdown-live/releases/latest) 目前保留历史 **0.2.0**；获取当前版本请优先使用商店，或[从源码构建 VSIX](docs/development.md)。
 
 ## 常用写作能力
 
@@ -93,15 +106,15 @@ Windows 与 Remote WSL 均可使用；WSL 窗口需在对应环境安装扩展�
 
 Markdown Live 面向笔记、技术文档和研究记录。表格遵循 Markdown 的结构，不支持合并单元格；不提供 PDF / Word 导出、BibTeX / Zotero 集成、图表拖拽设计。Pandoc 容器支持内容编辑及 Figure / Caption 排版，不读取 Word 模板样式。
 
-自动化验证记录见 [VALIDATION.md](VALIDATION.md)。实体中文输入法验收仍待完成；0.2.4 未重新执行 Remote WSL 安装包验证。
+自动化验证记录见 [VALIDATION.md](VALIDATION.md)。实体中文输入法验收仍待完成；Windows 与 Remote WSL 的已验证版本和范围分别记录。
 
 ## 开发与参与
 
 需要 **Node.js 22+**、npm 与 **VS Code 1.96+**。
 
 ```sh
-git clone https://github.com/zJay26/vscode-markdown-preview.git
-cd vscode-markdown-preview
+git clone https://github.com/zJay26/vscode-markdown-live.git
+cd vscode-markdown-live
 npm ci
 npm run dev
 ```
@@ -114,11 +127,12 @@ npm run dev
 | --- | --- |
 | [使用指南](docs/usage.md) | 安装、迁移、快捷键、兼容范围与配置 |
 | [开发指南](docs/development.md) | 本地开发、构建、测试和项目结构 |
+| [发布与更新](docs/releasing.md) | 提交推送、发布商店版本与本地更新 |
 | [贡献指南](CONTRIBUTING.md) | 提交问题、参与修改与验证要求 |
 | [验证记录](VALIDATION.md) | 已执行的检查、环境和未验证部分 |
 | [更新记录](CHANGELOG.md) | 每个版本的变化 |
 
-欢迎通过 [Issues](https://github.com/zJay26/vscode-markdown-preview/issues/new/choose) 提交可复现的问题和具体使用场景。
+欢迎通过 [Issues](https://github.com/zJay26/vscode-markdown-live/issues/new/choose) 提交可复现的问题和具体使用场景。
 
 ## 许可与致谢
 

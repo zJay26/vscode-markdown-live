@@ -32,11 +32,11 @@ try{
   let titleActions=[];
   for(let i=0;i<80;i++){
     for(const candidate of browser.contexts()[0].pages()){
-      const action=candidate.getByRole('button',{name:/^Markdown Live · by zJay: 打开可视化编辑(?:\s|$)/});
+      const action=candidate.getByRole('button',{name:/^Markdown Live: 打开可视化编辑(?:\s|$)/});
       if(await action.isVisible().catch(()=>false)){
         const toolbar=action.locator('xpath=ancestor::ul[1]');
         titleActions=await toolbar.locator('[role="button"]').evaluateAll(buttons=>buttons.filter(button=>button.getClientRects().length).map(button=>({label:button.getAttribute('aria-label'),icon:getComputedStyle(button).backgroundImage})));
-        if(!titleActions[0]?.label?.startsWith('Markdown Live · by zJay:'))throw new Error(`Markdown Live must be the first title action: ${JSON.stringify(titleActions)}`);
+        if(!titleActions[0]?.label?.startsWith('Markdown Live:'))throw new Error(`Markdown Live must be the first title action: ${JSON.stringify(titleActions)}`);
         if(!/markdown-live-icon\.png/.test(titleActions[0].icon))throw new Error('Packaged Markdown Live icon did not load');
         await toolbar.screenshot({path:`artifacts/${prefix}-title-actions.png`});
         await candidate.locator('.monaco-editor textarea.inputarea').first().focus();
