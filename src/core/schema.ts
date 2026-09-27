@@ -1,6 +1,7 @@
 import { Schema, type Node as PMNode, type Mark, type NodeSpec } from '@milkdown/kit/prose/model';
 import { tableNodes } from 'prosemirror-tables';
 import { type Ast, SourceDocument, semantic } from './markdown';
+import { divStyle } from './pandoc-div';
 
 const sid = { sid: { default: null } };
 const tables = tableNodes({ tableGroup: 'block', cellContent: 'paragraph', cellAttributes: { align: { default: null, getFromDOM: el => el.style.textAlign || null, setDOMAttr: (value, attrs) => { if (value) attrs.style = `text-align:${value}`; } } } });
@@ -11,6 +12,15 @@ export const schema = new Schema({
     paragraph: { attrs: sid, content: 'inline*', group: 'block', parseDOM: [{ tag: 'p' }], toDOM: () => ['p', 0] },
     heading: { attrs: { ...sid, level: { default: 1 } }, content: 'inline*', group: 'block', defining: true, parseDOM: [1,2,3,4,5,6].map(level => ({ tag: `h${level}`, attrs: { level } })), toDOM: n => [`h${n.attrs.level}`, 0] },
     blockquote: { attrs: sid, content: 'block+', group: 'block', defining: true, parseDOM: [{ tag: 'blockquote' }], toDOM: () => ['blockquote', 0] },
+    pandoc_div: {
+      attrs: { ...sid, attributes: { default: '{}' }, opening: { default: '::: {}' }, closing: { default: ':::' } },
+      content: 'block*', group: 'block', defining: true,
+      parseDOM: [{ tag: 'div[data-pandoc-div]', getAttrs: el => {
+        const attributes = el.getAttribute('data-pandoc-div') || '{}';
+        return { attributes, opening: el.getAttribute('data-pandoc-opening') || `::: ${attributes}`, closing: el.getAttribute('data-pandoc-closing') || ':::' };
+      } }],
+      toDOM: n => ['div', { class: 'pandoc-div', 'data-pandoc-div': n.attrs.attributes, 'data-pandoc-opening': n.attrs.opening, 'data-pandoc-closing': n.attrs.closing, 'data-custom-style': divStyle(n.attrs.attributes) }, 0],
+    },
     bullet_list: { attrs: { ...sid, spread: { default: false } }, content: 'list_item+', group: 'block', parseDOM: [{ tag: 'ul' }], toDOM: () => ['ul', 0] },
     ordered_list: { attrs: { ...sid, order: { default: 1 }, spread: { default: false } }, content: 'list_item+', group: 'block', parseDOM: [{ tag: 'ol', getAttrs: e => ({ order: +(e as HTMLElement).getAttribute('start')! || 1 }) }], toDOM: n => ['ol', { start: n.attrs.order }, 0] },
     list_item: { attrs: { ...sid, checked: { default: null }, spread: { default: false } }, content: 'paragraph block*', defining: true, parseDOM: [{ tag: 'li' }], toDOM: n => ['li', n.attrs.checked === null ? {} : { 'data-checked': String(n.attrs.checked), class: 'task-item' }, 0] },
@@ -38,7 +48,8 @@ export const schema = new Schema({
 
 export function fromSource(source: SourceDocument): PMNode {
   const definitions = new Map<string, Ast>();
-  source.ast.children?.forEach(n => { if (n.type === 'definition') definitions.set(n.identifier, n); });
+  const collectDefinitions = (n: Ast) => { if (n.type === 'definition' && !definitions.has(n.identifier)) definitions.set(n.identifier, n); n.children?.forEach(collectDefinitions); };
+  collectDefinitions(source.ast);
   const inline = (n: Ast, marks: Mark[] = []): PMNode[] => {
     const id = { sid: n._id };
     if (n.type === 'text') return n.value ? [schema.text(n.value, marks)] : [];
@@ -66,6 +77,7 @@ export function fromSource(source: SourceDocument): PMNode {
       case 'paragraph': return schema.nodes.paragraph.create(id, n.children?.flatMap(c => inline(c)));
       case 'heading': return schema.nodes.heading.create({ ...id, level: n.depth }, n.children?.flatMap(c => inline(c)));
       case 'blockquote': return schema.nodes.blockquote.create(id, children());
+      case 'pandocDiv': return schema.nodes.pandoc_div.create({ ...id, attributes: n.attributes, opening: n.opening, closing: n.closing }, children());
       case 'list': return schema.nodes[n.ordered ? 'ordered_list' : 'bullet_list'].create({ ...id, order: n.start ?? 1, spread: n.spread }, children());
       case 'listItem': {
         const content = children(); if (content[0]?.type !== schema.nodes.paragraph) content.unshift(schema.nodes.paragraph.create());
@@ -115,6 +127,7 @@ function convertAst(n: PMNode): Ast {
     case 'paragraph': return { type: 'paragraph', ...id, children: inlines() };
     case 'heading': return { type: 'heading', ...id, depth: n.attrs.level, children: inlines() };
     case 'blockquote': return { type: 'blockquote', ...id, children: children() };
+    case 'pandoc_div': return { type: 'pandocDiv', ...id, attributes: n.attrs.attributes, opening: n.attrs.opening, closing: n.attrs.closing, children: children() };
     case 'bullet_list': case 'ordered_list': return { type: 'list', ...id, ordered: n.type.name === 'ordered_list', start: n.type.name === 'ordered_list' ? n.attrs.order : null, spread: n.attrs.spread, children: children() };
     case 'list_item': return { type: 'listItem', ...id, checked: n.attrs.checked, spread: n.attrs.spread, children: children() };
     case 'code_block': return { type: 'code', ...id, lang: n.attrs.language || null, meta: n.attrs.meta, value: n.textContent };

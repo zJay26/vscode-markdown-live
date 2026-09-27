@@ -2,7 +2,7 @@ import { readFile, readdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 export async function writeNotices() {
   const lock=JSON.parse(await readFile('package-lock.json','utf8'));
-  let output='Markdown Live — third-party notices\n\nIncludes production dependencies; not every module is included in every bundle.\n\n';
+  let output='Markdown Live · by zJay — third-party notices\n\nIncludes production dependencies; not every module is included in every bundle.\n\n';
   for (const [path,entry] of Object.entries(lock.packages)) {
     if(!path||entry.dev)continue;
     try {

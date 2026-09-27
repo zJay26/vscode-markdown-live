@@ -1,0 +1,6 @@
+.markdown-content .pandoc-div { margin: .8em 0; }
+.markdown-content .pandoc-div > :first-child { margin-top: 0; }
+.markdown-content .pandoc-div > :last-child { margin-bottom: 0; }
+.markdown-content .pandoc-div:empty { min-height: 1em; }
+.markdown-content .pandoc-div[data-custom-style="Figure" i] { text-align: center; }
+.markdown-content .pandoc-div[data-custom-style="Caption" i] { font-size: .9em; line-height: 1.6; color: var(--muted); }

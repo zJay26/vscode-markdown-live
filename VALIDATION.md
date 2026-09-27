@@ -1,5 +1,70 @@
 # 验证记录
 
+## 0.2.4：Marketplace 安装包验证
+
+测试日期：2026-09-27。最终扩展 ID 为 `zJay.markdown-live-zjay`（`markdown-live` 被 Marketplace 提示已占用）。
+
+- 在下方 42 项核心测试、40 项浏览器测试及生产构建通过的源码基础上打包；修复源码文件 SHA-256 与验证记录一致。
+- 最终 ID 的 Windows / VS Code 1.96.3 宿主测试 9 项通过；最终 VSIX 在全新隔离配置中安装成功，12 项安装包界面检查通过，覆盖标题栏入口、快捷键、编辑保存、缩放、Mermaid、局部源码、大纲、专注模式与粘贴图片。
+- 重用旧 UI 测试配置曾触发标题栏顺序断言失败；新增 `MARKDOWN_LIVE_UI_PROFILE` 支持后，在全新隔离配置中复测全部通过。未为此修改生产代码。
+- 133 个已安装文件与最终 VSIX 逐项 SHA-256 一致；清单除了 VS Code 自动写入的 `__metadata` 外完全等价。文档图片的固定 HTTPS 地址可访问，下载内容与本地图片哈希一致。
+- 包：`artifacts/markdown-live-zjay-0.2.4.vsix`；SHA-256：`68d81ead109d678036c0d0ef8e34533f21ed5370ca3e4d89217fba62bf6c6ec7`。
+- 详细记录：`artifacts/marketplace/verification-0.2.4.json`、同目录宿主/界面报告与文件清单。此节在打包后补充，不包含在上述已提交 VSIX 中。
+- 本次未重新执行 Remote WSL 安装包验证和实体中文输入法验收。
+
+## 0.2.4：Pandoc fenced Div 渲染修复
+
+测试日期：2026-09-27；Windows、Node.js、Microsoft Edge。此节只记录本次渲染修复的源码与浏览器验证，不代表 Marketplace 发布或已安装扩展升级完成。
+
+- `npm run typecheck`、`npm test`（42 项）、完整 Playwright 浏览器回归（40 项）及 `npm run build` 全部通过；浏览器使用独立端口 4189。
+- 新增 11 项核心测试与 4 项浏览器测试，覆盖 Figure / Caption 直接编辑、LF / CRLF 原文保留、嵌套与不同长度围栏、带引号属性、容器内列表/表格/引用/链接定义、引用与列表中的容器、代码/HTML/frontmatter/转义示例、未闭合围栏、段落拆分与删除、局部源码编辑、撤销重做和重新载入。
+- 图片实际解码成功；已目视检查 `artifacts/pandoc-div-rendering.png`：围栏不显示为正文，图片与图注正常显示。未知属性仅保存在数据与源码中，不作为 HTML 事件或 CSS 执行。
+- 2,000 行现有性能用例：打开 739 ms，输入 P95 约 24.2 ms，达到原测试阈值；原始数据为 `artifacts/performance.json`。
+- 本次未升级用户已安装的扩展，未重新运行 Windows / Remote WSL 安装包宿主验证。完整成对容器得到支持；未闭合围栏保持可见，其他 Word 自定义样式只保留属性与内容，不还原 reference.docx 的格式。
+
+## 0.2.3：C1 图标与个人署名
+
+测试日期：2026-09-26；Windows / VS Code 1.96.3、Ubuntu Remote WSL、Node.js 24.18.0、Microsoft Edge。
+
+- 名称统一为 Markdown Live · by zJay；保留 `markdown-live-local.markdown-live`、`markdownLive.editor`、命令 ID 与设置键。
+- C1 原图与 `media/markdown-live-icon.png` 的 SHA-256 一致；VSIX 中包含扩展图标和 Vite 生成的 Webview 图片资源。常规工具栏按 44px 显示，专注模式按 34px 显示。
+- TypeScript、生产构建、VSIX 打包通过；31 项核心测试通过。
+- 浏览器执行 3 项相关回归：明暗主题及窄窗口、大纲与专注模式、360px 查找和大纲操作，全部通过。已目视检查明暗主题下的 C1 图标与署名，并更新 README 截图。
+- Windows / WSL 安装包界面验证各 12 项通过：确认标题栏首项使用 C1 PNG 和新署名，Ctrl+Shift+V 打开编辑器；同时验证生产资源、150% 缩放、正文编辑与保存、图表、局部源码、缩放复位、大纲、专注模式和粘贴图片。
+
+测试使用 `.local-test/branding-extensions/markdown-live-local.markdown-live-0.2.3` 中的 VSIX 安装副本。报告为 `artifacts/installed-ui-report.json` 与 `artifacts/installed-wsl-ui-report.json`，包含实际标签、图标 URI、安装路径与验证时间。
+
+本轮未修改 Markdown 编辑实现、缩放或快捷键逻辑；未重复运行完整浏览器回归和独立宿主协议测试。已有工作区改动已保留。
+
+## 0.2.2：独立图标与打开快捷键
+
+测试日期：2026-09-26；Windows / VS Code 1.96.3 与 Ubuntu Remote WSL。
+
+- TypeScript、生产构建、VSIX 打包通过；安装包包含明暗主题各一份蓝色 M＋闪电 SVG。
+- Windows / WSL 安装包界面验证各 12 项通过：实际检查标题栏首项的标签与 SVG 资源地址，并在内置 Markdown 扩展和原有快捷键均启用的情况下，发送 Ctrl+Shift+V，确认打开的是 Markdown Live。
+- 同一轮安装包测试也验证了 150% 缩放、光标定位、真实文件编辑保存、局部源码、图表、大纲、专注模式与图片写入。
+- 入口排序使用 `navigation@-100`，本机 Codex 与内置侧边预览均为 `navigation` 默认顺序；快捷键仅在 Markdown 源码编辑器聚焦时生效。内置侧边预览的 Ctrl+K V 保留。
+
+本轮只修改图标、菜单、快捷键与文档，没有更改编辑器内容实现；未重复运行下方记录的核心和浏览器全套测试。最新实际界面报告为 `artifacts/installed-ui-report.json`、`artifacts/installed-wsl-ui-report.json`，图标及排序截图为同前缀的 `-title-actions.png`。报告记录安装目录、时间、按钮标签及图标 URI，可与版本核对。
+
+## 0.2.1：入口恢复与内容缩放
+
+测试日期：2026-09-26；Windows / VS Code 1.96.3、Ubuntu Remote WSL、Node.js 24.18.0、Microsoft Edge。
+
+- TypeScript、生产构建与 VSIX 打包通过；31 项核心测试通过，最终完整浏览器回归 36 项通过，无失败或重试。
+- 新增缩放验证：正文、图片和公式等比缩放，工具栏尺寸不变；普通滚轮仍滚动；支持小滚轮增量、行 / 页单位、50%–200% 上下限、点击复位、指针位置保持、窄窗口与重载恢复（含顶部滚动位置为 0）。
+- 缩放不产生编辑 / 保存请求，不改变原始 Markdown 或已保存状态；在缩放后继续选区排版、编辑局部源码、快速方向键与段落拆分 / 合并。
+- Windows 与 WSL 的安装包界面验证分别覆盖 11 项检查：纯文本语言模式下的 `.md` 标题栏入口、生产 Webview、150% 缩放后的定位与真实文件编辑保存、源码面板、缩放复位、图表、大纲、专注模式与图片写入。报告为 `artifacts/installed-ui-report.json` 与 `artifacts/installed-wsl-ui-report.json`，核对版本及验证时间。
+- 2000 行文档本轮打开 753 ms，输入 P95 为 18.7 ms；详见 `artifacts/performance.json`。这是当前环境的采样，不是受控性能对比。
+
+本轮实际发现并修复了两类交互问题：VS Code 1.96.3 中 CSS zoom 的坐标与鼠标命中不一致，改为 transform 缩放并同步布局高度；快速方向键后异步选区事件可能恢复旧光标，增加导航键释放时的选区同步。后者的诊断对照在关闭缩放时也复现，修复后 9 次诊断通过，并保留 50% / 100% / 150% / 200% 的正式回归。旧版坐标行为的上游说明见 [VS Code #233692](https://github.com/microsoft/vscode/issues/233692)。
+
+安装包测试使用隔离配置、安装目录和测试文件；日常环境安装的是本轮验证的生产文件。未重跑下方 0.2.0 的独立宿主协议测试和 npm 漏洞审计，不能将其历史结果视为本轮重新执行。实体鼠标和中文输入法仍未进行人工验收。
+
+---
+
+以下为 0.2.0 的历史验证记录。
+
 版本：0.2.0。测试日期：2026-09-26。环境：Windows、VS Code 1.96.3、Node.js 24.18.0、Microsoft Edge；Remote WSL 使用 Ubuntu 和同版本 VS Code Server。
 
 ## 本轮结果

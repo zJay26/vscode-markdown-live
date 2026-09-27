@@ -1,27 +1,34 @@
 {
-  "name": "markdown-live",
-  "displayName": "Markdown Live",
+  "name": "markdown-live-zjay",
+  "displayName": "Markdown Live · by zJay",
   "description": "直接在渲染后的 Markdown 中编辑，支持局部源码、公式、图表和脚注。",
-  "version": "0.2.0",
-  "publisher": "markdown-live-local",
+  "version": "0.2.4",
+  "publisher": "zJay",
+  "author": { "name": "zJay", "url": "https://github.com/zJay26" },
+  "icon": "media/markdown-live-icon.png",
   "license": "MIT",
   "repository": { "type": "git", "url": "https://github.com/zJay26/vscode-markdown-preview.git" },
   "homepage": "https://github.com/zJay26/vscode-markdown-preview#readme",
   "bugs": { "url": "https://github.com/zJay26/vscode-markdown-preview/issues" },
   "engines": { "vscode": "^1.96.0" },
   "categories": ["Other"],
+  "keywords": ["markdown", "wysiwyg", "editor", "latex", "mermaid"],
   "main": "./dist/extension.cjs",
   "extensionKind": ["workspace"],
   "activationEvents": ["onCustomEditor:markdownLive.editor"],
   "contributes": {
-    "customEditors": [{ "viewType": "markdownLive.editor", "displayName": "Markdown Live", "selector": [{ "filenamePattern": "*.md" }, { "filenamePattern": "*.markdown" }], "priority": "option" }],
+    "customEditors": [{ "viewType": "markdownLive.editor", "displayName": "Markdown Live · by zJay", "selector": [{ "filenamePattern": "*.md" }, { "filenamePattern": "*.markdown" }], "priority": "option" }],
     "commands": [
-      { "command": "markdownLive.open", "title": "Markdown Live: 打开可视化编辑" },
-      { "command": "markdownLive.source", "title": "Markdown Live: 打开对应源码" }
+      { "command": "markdownLive.open", "title": "Markdown Live · by zJay: 打开可视化编辑", "icon": "media/markdown-live-icon.png" },
+      { "command": "markdownLive.source", "title": "Markdown Live · by zJay: 打开对应源码" }
     ],
-    "menus": { "editor/title": [{ "command": "markdownLive.open", "when": "resourceLangId == markdown", "group": "navigation" }] },
+    "menus": {
+      "editor/title": [{ "command": "markdownLive.open", "when": "activeCustomEditorId != markdownLive.editor && (resourceLangId == markdown || resourceExtname == .md || resourceExtname == .markdown)", "group": "navigation@-100" }],
+      "explorer/context": [{ "command": "markdownLive.open", "when": "resourceExtname == .md || resourceExtname == .markdown", "group": "navigation@10" }]
+    },
+    "keybindings": [{ "command": "markdownLive.open", "key": "ctrl+shift+v", "mac": "cmd+shift+v", "when": "editorTextFocus && !notebookEditorFocused && (editorLangId == markdown || resourceExtname == .md || resourceExtname == .markdown)" }],
     "configuration": {
-      "title": "Markdown Live",
+      "title": "Markdown Live · by zJay",
       "properties": {
         "markdownLive.fontSize": { "type": "number", "default": 16, "minimum": 12, "maximum": 32, "description": "正文字号（px）" },
         "markdownLive.lineHeight": { "type": "number", "default": 1.7, "minimum": 1.2, "maximum": 2.5, "description": "正文行高" },

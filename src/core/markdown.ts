@@ -4,9 +4,10 @@ import remarkStringify from 'remark-stringify';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import remarkFrontmatter from 'remark-frontmatter';
+import remarkPandocDiv from './pandoc-div';
 
 export interface Ast { type: string; children?: Ast[]; value?: string; position?: { start: { offset: number }; end: { offset: number } }; _id?: string; [key: string]: any }
-const processor = unified().use(remarkParse).use(remarkGfm).use(remarkMath).use(remarkFrontmatter, ['yaml', 'toml']).use(remarkStringify, { bullet: '-', fences: true, listItemIndent: 'one' });
+const processor = unified().use(remarkParse).use(remarkGfm).use(remarkMath).use(remarkFrontmatter, ['yaml', 'toml']).use(remarkPandocDiv).use(remarkStringify, { bullet: '-', fences: true, listItemIndent: 'one' });
 export function parse(source: string): Ast { return processor.parse(source) as unknown as Ast; }
 export function stringify(ast: Ast, options?: {bullet?: '-'|'+'|'*'}): string { return (options ? processor().use(remarkStringify,{bullet:'-',fences:true,listItemIndent:'one',...options}) : processor).stringify(ast as any).replace(/\n$/, ''); }
 export function semantic(ast: Ast): string {

@@ -158,7 +158,7 @@ export class MarkdownLiveProvider implements vscode.CustomTextEditorProvider, vs
       }
       case 'recover': {
         const draft = await vscode.workspace.openTextDocument({ content: message.text, language: 'markdown' });
-        await vscode.commands.executeCommand('vscode.diff', document.uri, draft.uri, 'Markdown Live：当前文件 ↔ 待恢复编辑'); break;
+        await vscode.commands.executeCommand('vscode.diff', document.uri, draft.uri, 'Markdown Live · by zJay：当前文件 ↔ 待恢复编辑'); break;
       }
     }
   }

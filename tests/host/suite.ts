@@ -7,7 +7,7 @@ export async function run() {
   const report: {name:string;passed:boolean;error?:string}[]=[];
   const folder = vscode.workspace.workspaceFolders?.[0]?.uri;
   if(!folder) throw new Error('Host tests require an isolated workspace');
-  const extension = vscode.extensions.getExtension('markdown-live-local.markdown-live')!;
+  const extension = vscode.extensions.getExtension('zJay.markdown-live-zjay')!;
   const provider = await extension.activate();
   const uri=vscode.Uri.joinPath(folder,'宿主验证.md');
   const original='# 标题\r\n\r\n正文\r\n\r\n<!-- keep -->\r\n';

@@ -20,6 +20,7 @@ import { FormulaView, CodeView, ImageView, sourceEditor, type ViewActions } from
 import 'katex/dist/katex.min.css';
 import './style.css';
 import './workspace.css';
+import './pandoc.css';
 
 document.querySelector('#app')!.innerHTML = editorShell;
 
@@ -45,6 +46,8 @@ let currentMatch = -1;
 let headingSignature = '';
 let fileDirty = false;
 let focusMode = false;
+let contentZoom = 100;
+let wheelZoomDelta = 0, lastZoomWheel = 0;
 let activeHeading: HTMLElement | undefined;
 let scrollFrame = 0;
 let scrollSaveTimer: ReturnType<typeof setTimeout>;
@@ -63,7 +66,30 @@ function currentText(): string {
 function notify(message: string) { $('notice').textContent = message; $('notice').hidden = false; clearTimeout(noticeTimer); noticeTimer = setTimeout(() => $('notice').hidden = true, 6000); }
 function status(value: string) { $('sync-state').textContent = value; $('sync-state').dataset.state = value === '未保存' ? 'dirty' : value.includes('冲突') ? 'conflict' : value.endsWith('中') ? 'busy' : 'saved'; }
 function idleStatus() { status(isStandalone ? fileDirty ? '仅本次预览' : '预览已保存' : fileDirty ? '未保存' : '已保存'); }
-function persistUI() { saveState({ ui: { outline: !$('outline').hidden, focus: focusMode }, scroll: $('canvas').scrollTop }); }
+function persistUI() { saveState({ ui: { outline: !$('outline').hidden, focus: focusMode, zoom: contentZoom }, scroll: $('canvas').scrollTop }); }
+function sizeZoomedContent() {
+  $('editor-viewport').style.height = `${$('editor').getBoundingClientRect().height}px`;
+}
+function setContentZoom(value: unknown, pointer?: { x: number; y: number }) {
+  const next = typeof value === 'number' && Number.isFinite(value) ? Math.max(50, Math.min(200, Math.round(value))) : 100;
+  const canvas = $('canvas'), editor = $('editor'), bounds = canvas.getBoundingClientRect();
+  const x = pointer?.x ?? (bounds.left + bounds.right) / 2;
+  const y = pointer?.y ?? (bounds.top + bounds.bottom) / 2;
+  const target = document.elementFromPoint(x, y);
+  const anchor = target && editor.contains(target) ? target : editor;
+  const before = anchor.getBoundingClientRect();
+  const fraction = before.height ? Math.max(0, Math.min(1, (y - before.top) / before.height)) : 0;
+  // Older VS Code disables Chromium's standardized CSS zoom coordinates.
+  // A transform keeps mouse hit testing, selections and editor geometry aligned.
+  $('editor-viewport').style.setProperty('--content-scale', String(next / 100));
+  sizeZoomedContent();
+  const after = anchor.getBoundingClientRect();
+  canvas.scrollTop += after.top + fraction * after.height - (before.top + fraction * before.height);
+  contentZoom = next;
+  const control = $('content-zoom'); control.textContent = `${next}%`;
+  control.setAttribute('aria-label', `内容缩放 ${next}%，点击恢复 100%`);
+  persistUI(); scheduleUI();
+}
 function setFocusMode(enabled: boolean) {
   focusMode = enabled; document.body.classList.toggle('focus-mode', enabled);
   document.querySelector('[data-action="focus"]')!.setAttribute('aria-pressed', String(enabled));
@@ -198,6 +224,12 @@ function initialize(text: string) {
         }
         return false;
       },
+      // Commit the browser's final caret before a delayed selectionchange can
+      // restore the previous state after a rapid sequence of navigation keys.
+      keyup: (_view, e) => {
+        if (e.key.startsWith('Arrow') || ['Home', 'End', 'PageUp', 'PageDown'].includes(e.key)) readDOMSelection();
+        return false;
+      },
     },
     handleClick: (_view, pos, event) => {
       const target = event.target as HTMLElement;
@@ -267,8 +299,10 @@ function receive(message: HostMessage) {
       const recovered = loadState(); if (typeof recovered?.draft === 'string' && recovered.draft !== recovered.base && recovered.draft !== confirmed) setConflict(recovered.draft, '发现重载前未同步的编辑，可先比较并恢复。');
       $('outline').hidden = !recovered?.ui?.outline;
       document.querySelector('[data-action="outline"]')!.setAttribute('aria-expanded', String(!$('outline').hidden));
+      setContentZoom(recovered?.ui?.zoom);
       if (recovered?.ui?.focus) setFocusMode(true);
-      if (recovered?.scroll) $('canvas').scrollTop = recovered.scroll; return;
+      $('canvas').scrollTop = Number.isFinite(recovered?.scroll) ? Math.max(0, recovered.scroll) : 0;
+      persistUI(); return;
     }
     if (message.version <= version && message.text === confirmed) { if (!inFlight && conflictDraft === undefined) idleStatus(); return; }
     if (inFlight || composing) { pendingRemote = message; return; }
@@ -518,6 +552,7 @@ function action(id: string) {
   switch (id) {
     case 'outline': $('outline').hidden = !$('outline').hidden; document.querySelector('[data-action="outline"]')!.setAttribute('aria-expanded', String(!$('outline').hidden)); persistUI(); scheduleUI(); break;
     case 'focus': setFocusMode(!focusMode); view.focus(); break;
+    case 'reset-zoom': wheelZoomDelta = 0; setContentZoom(100); break;
     case 'help': $<HTMLDialogElement>('help-dialog').showModal(); break;
     case 'copy-markdown': send({ type: 'copy', text: conflictDraft ?? currentText() }); break;
     case 'undo': history(false); break;
@@ -557,12 +592,23 @@ document.addEventListener('mousedown', event => {
 });
 document.addEventListener('click', event => { const target = event.target as HTMLElement; const button = target.closest<HTMLElement>('[data-action]'); if (button && view) action(button.dataset.action!); if (!target.closest('#insert-menu') && !target.closest('[data-action="insert"]') && target !== view?.dom) $('insert-menu').hidden = true; });
 $('source-handle').onmousedown = e => e.preventDefault(); $('source-handle').onclick = () => openSource();
+$('canvas').addEventListener('wheel', event => {
+  if (!view || !(event.ctrlKey || event.metaKey) || !Number.isFinite(event.deltaY) || event.deltaY === 0) return;
+  event.preventDefault(); event.stopPropagation();
+  // Accumulate small trackpad deltas; a mouse notch is normally 100 pixels or 3 lines.
+  const delta = event.deltaY * (event.deltaMode === WheelEvent.DOM_DELTA_LINE ? 40 : event.deltaMode === WheelEvent.DOM_DELTA_PAGE ? 100 : 1);
+  if (event.timeStamp - lastZoomWheel > 250 || Math.sign(delta) !== Math.sign(wheelZoomDelta)) wheelZoomDelta = 0;
+  lastZoomWheel = event.timeStamp; wheelZoomDelta += delta;
+  const steps = Math.trunc(wheelZoomDelta / 100);
+  if (steps) { wheelZoomDelta -= steps * 100; setContentZoom(contentZoom - steps * 10, { x: event.clientX, y: event.clientY }); }
+}, { passive: false, capture: true });
 $('canvas').addEventListener('scroll', () => {
   $('bubble').hidden = true; $('source-handle').hidden = true;
   if (!scrollFrame) scrollFrame = requestAnimationFrame(() => { scrollFrame = 0; if (view) updateActiveHeading(); });
   clearTimeout(scrollSaveTimer); scrollSaveTimer = setTimeout(persistUI, 300);
 }, { passive: true });
 window.addEventListener('resize', scheduleUI);
+new ResizeObserver(sizeZoomedContent).observe($('editor'));
 $('outline-filter').addEventListener('input', scheduleUI);
 $('block-type').addEventListener('change', () => {
   const value = $<HTMLSelectElement>('block-type').value;

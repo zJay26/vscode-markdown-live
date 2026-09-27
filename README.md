@@ -1,16 +1,24 @@
-# Markdown Live
+# Markdown Live · by zJay
+
+<img src="https://raw.githubusercontent.com/zJay26/vscode-markdown-preview/6b213c8eb1e582c49792c5c48d54f676be671156/media/markdown-live-icon.png" width="96" height="96" alt="Markdown Live · by zJay 图标">
 
 在 VS Code 的渲染界面中直接阅读和修改 Markdown，保留普通 `.md` 文件与原生保存、撤销、文件管理工作流。
 
-![编辑界面](docs/images/editor-light.png)
+![编辑界面](https://raw.githubusercontent.com/zJay26/vscode-markdown-preview/6b213c8eb1e582c49792c5c48d54f676be671156/docs/images/editor-light.png)
 
 ## 安装和使用
 
-1. 从 [GitHub Releases](https://github.com/zJay26/vscode-markdown-preview/releases/latest) 下载 `markdown-live-0.2.0.vsix`，然后在 VS Code 的扩展菜单中选择 **Install from VSIX…** 安装。
-2. 打开 `.md` 或 `.markdown` 文件，点击编辑器标题栏的 **Markdown Live: 打开可视化编辑**，或右键编辑器标签 → **Reopen Editor With… → Markdown Live**。
+1. 在 VS Code 扩展面板搜索 `@id:zJay.markdown-live-zjay`，或打开 [Visual Studio Marketplace 页面](https://marketplace.visualstudio.com/items?itemName=zJay.markdown-live-zjay) 安装。也可在扩展菜单中选择 **Install from VSIX…** 安装本地构建的 `artifacts/markdown-live-zjay-0.2.4.vsix`；[GitHub Releases](https://github.com/zJay26/vscode-markdown-preview/releases/latest) 提供此前发布的版本。
+2. 打开 `.md` 或 `.markdown` 文件，点击编辑器标题栏最左侧蓝色 **Z／MD 文档**图标（**Markdown Live · by zJay: 打开可视化编辑**），或在源码编辑器中按 **Ctrl+Shift+V**（macOS：**⌘+Shift+V**）。也可右键编辑器标签 → **Reopen Editor With… → Markdown Live · by zJay**。
 3. 直接点击正文开始修改。插件不会自动更改已有的默认编辑器关联；可在 Reopen Editor With 菜单中自行设为默认。
 
 Remote WSL：在 WSL 窗口中安装同一 VSIX。插件运行在 workspace 扩展宿主，图片保存在 Markdown 所在的 WSL 文件系统中，不会写入同名 Windows 路径。
+
+无需安装其他第三方 Markdown 扩展。扩展 ID 为 `zJay.markdown-live-zjay`；若标题栏入口消失，先确认当前 VS Code 配置及本地 / WSL 环境中仍安装并启用了 Markdown Live · by zJay。也可在资源管理器右键 Markdown 文件，或用命令面板执行 **Markdown Live · by zJay: 打开可视化编辑**。标题栏入口同时按 Markdown 语言及 `.md` / `.markdown` 后缀识别文件。
+
+**从旧本地版迁移：** 0.2.3 及更早版本使用 `markdown-live-local.markdown-live`，不会作为同一扩展自动更新为商店版。请安装 `zJay.markdown-live-zjay`，并禁用或卸载旧版，避免命令和入口重复；Windows 与 Remote WSL 环境分别处理。Markdown 文件与图片无需转换，`markdownLive.*` 设置键和 `markdownLive.editor` 编辑器关联保持不变。
+
+**快捷键说明：** Ctrl+Shift+V 在 Markdown 源码编辑器中优先打开 Markdown Live；其他类型文件和终端不受此绑定影响。VS Code 内置的“打开侧边预览”仍可用 Ctrl+K，再按 V 调用。若想改用其他组合，在“键盘快捷方式”（Ctrl+K Ctrl+S）中搜索 `markdownLive.open`；用户自定义绑定优先于扩展默认值。
 
 Release 同时提供源码压缩包与 `SHA256SUMS.txt` 校验文件。本地构建的安装包输出到 `artifacts/`。
 
@@ -32,12 +40,13 @@ Release 同时提供源码压缩包与 `SHA256SUMS.txt` 校验文件。本地构
 | 查找替换 | `Ctrl+F` / `Ctrl+H`；针对完整 Markdown 源码搜索，支持区分大小写、全字匹配和批量替换 |
 | 大纲导航 | `Ctrl+Shift+O`；筛选章节、查看当前章节和阅读进度 |
 | 专注写作 | `Ctrl+Shift+F` 隐藏工具与大纲；再次按快捷键或点击“退出专注”返回 |
+| 内容缩放 | 在正文区域按住 `Ctrl` 滚动鼠标滚轮，上滚放大、下滚缩小（50%–200%）；点击底部比例恢复 100%。正文、公式、图片和局部源码一起缩放，工具栏保持原大小 |
 | 复制内容 | 代码块右上角复制代码；排版工具栏复制整篇 Markdown |
 | 快捷键帮助 | 顶部 `?` 查看完整快捷键表；macOS 将 Ctrl 换为 ⌘ |
 
 状态栏显示中西文混合字词数、非空白字符数、预计阅读时间、选区字符数和任务完成进度。字词与阅读时间不含代码块、原始 HTML、frontmatter 等源码块；中日韩文字按字符统计，其他语言按单词统计，阅读时间只是估算。
 
-文档右上角区分“未保存”“保存中”“已保存”，对应真实 VS Code 文档状态；同步到编辑器并不等于写入磁盘。大纲和专注模式偏好随 Webview 状态保存。窄窗口的大纲作为侧栏展开，选择章节后收起。
+文档右上角区分“未保存”“保存中”“已保存”，对应真实 VS Code 文档状态；同步到编辑器并不等于写入磁盘。大纲、专注模式和内容缩放比例随当前 Webview 状态保存，可在视图重载后恢复；缩放不修改 Markdown 或全局字号设置。窄窗口的大纲作为侧栏展开，选择章节后收起。
 
 查找使用字面文本，替换内容中的 `$`、反斜杠等也按原文写入；不解析正则表达式。Enter / Shift+Enter 跳到下一个 / 上一个匹配所在段落。正文显示匹配高亮，源码中的公式和定义也计入匹配数。全字匹配按 Unicode 字母、数字、组合标记和下划线判断边界。
 
@@ -46,6 +55,7 @@ Release 同时提供源码压缩包与 `SHA256SUMS.txt` 校验文件。本地构
 ### 内容与兼容范围
 
 - CommonMark 常用结构，以及 GFM 表格、任务清单、删除线、自动链接和脚注。
+- 支持成对的 Pandoc fenced Div（`::: {custom-style="Caption"}` / `:::`），包括嵌套、类名和属性。围栏在排版中隐藏，Figure 居中、Caption 使用图注排版，内容可直接编辑；局部源码仍可查看和修改完整围栏。其他自定义样式保留属性并显示内容，不读取 Word 模板样式；不完整围栏保留为可见文字。
 - 行内 `$…$` / 块级 `$$…$$` 数学公式使用 KaTeX；`mermaid` 代码围栏使用 Mermaid。
 - YAML/TOML frontmatter、原始 HTML、链接定义以源码块显示和编辑。HTML 不执行脚本。
 - 表格使用 Markdown 可表达的结构，不支持合并单元格和单元格内多段落。

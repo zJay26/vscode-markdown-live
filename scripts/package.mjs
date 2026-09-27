@@ -5,6 +5,7 @@ const manifest = JSON.parse(await readFile('package.json', 'utf8'));
 await createVSIX({
   packagePath: `artifacts/${manifest.name}-${manifest.version}.vsix`,
   dependencies: false,
-  // Documentation screenshots are bundled and must remain relative.
-  rewriteRelativeLinks: false,
+  // Marketplace documentation needs public HTTPS links; runtime assets stay bundled.
+  rewriteRelativeLinks: true,
+  githubBranch: 'main',
 });

@@ -11,11 +11,10 @@ button:disabled { opacity: .4; cursor: default; }
 button:disabled:hover { background: transparent; }
 button[aria-pressed="true"], button[aria-expanded="true"] { background: var(--hover); color: var(--accent); border-color: var(--line); }
 .toolbar { min-height: 60px; padding: 8px 20px; gap: 20px; flex-wrap: wrap; }
-.identity { min-width: 145px; max-width: 24%; flex: 1; gap: 12px; }
-.brand-mark { display: grid; place-content: center; position: relative; width: 32px; height: 34px; flex-shrink: 0; border: 1px solid var(--line); border-radius: 5px; font-size: 24px; }
-.brand-mark span { position: absolute; right: 1px; top: 0; background: var(--surface); }
+.identity { min-width: 190px; max-width: 24%; flex: 1; gap: 12px; }
+.brand-mark { display: block; width: 44px; height: 44px; flex-shrink: 0; border: 0; border-radius: 9px; object-fit: contain; background: #fff; }
 .document-identity { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
-.identity-caption { font-size: 8px; color: var(--muted); letter-spacing: .13em; }
+.identity-caption { font-size: 10px; color: var(--muted); letter-spacing: .015em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .toolbar nav { min-width: 0; gap: 2px; }
 .toolbar button { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 32px; padding: 6px 8px; }
 .toolbar-end { display: flex; align-items: center; gap: 7px; margin-left: auto; }
@@ -30,7 +29,8 @@ button[aria-pressed="true"], button[aria-expanded="true"] { background: var(--ho
 #block-type { border-color: transparent; width: 98px; flex-shrink: 0; padding: 5px; font-size: 12px; }
 .workspace { position: relative; background: var(--canvas); }
 #canvas { padding: 32px 48px 80px; position: relative; }
-#editor { padding: 38px 48px 65px; min-height: calc(100% - 4px); background: var(--paper); border: 1px solid var(--line); border-radius: 5px; box-shadow: 0 2px 7px #00000004; }
+#editor-viewport { --content-scale: 1; position: relative; width: 100%; max-width: calc(var(--content-width) * var(--content-scale)); margin: 0 auto; }
+#editor { position: absolute; top: 0; left: 0; width: calc(100% / var(--content-scale)); max-width: none; margin: 0; transform: scale(var(--content-scale)); transform-origin: top left; padding: 38px 48px 65px; background: var(--paper); border: 1px solid var(--line); border-radius: 5px; box-shadow: 0 2px 7px #00000004; }
 .markdown-content { min-height: 55vh; }
 .markdown-content h1 { font-weight: 700; letter-spacing: -.035em; }
 .markdown-content h2 { border-bottom: 0; padding-bottom: 0; }
@@ -51,6 +51,7 @@ footer { min-height: 30px; height: auto; padding: 6px 18px; gap: 15px; backgroun
 #section-label { max-width: 20vw; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 #document-stats { white-space: nowrap; }
 #selection-stats { color: var(--accent); }
+#content-zoom { min-width: 44px; padding: 1px 5px; font-size: inherit; }
 #reading-progress { min-width: 28px; text-align: right; }
 #empty-hint { position: absolute; top: 89px; left: max(100px, calc((100% - var(--content-width)) / 2 + 50px)); margin: 0; color: var(--muted); font-size: 14px; pointer-events: none; }
 kbd { font-family: var(--vscode-editor-font-family, 'Cascadia Code', Consolas, monospace); }
@@ -74,6 +75,7 @@ dialog { max-height: 88vh; overflow-y: auto; min-width: min(360px, 90vw); }
 #form-fields input { min-width: 0; }
 .focus-mode .toolbar nav, .focus-mode #format-bar, .focus-mode #outline { display: none !important; }
 .focus-mode .toolbar { min-height: 50px; }
+.focus-mode .brand-mark { width: 34px; height: 34px; }
 .focus-mode #canvas { padding-top: 40px; }
 .focus-mode #editor { border-color: transparent; box-shadow: none; }
 .focus-mode .workspace { background: var(--surface); }
