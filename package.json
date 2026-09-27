@@ -2,7 +2,7 @@
   "name": "markdown-live-zjay",
   "displayName": "Markdown Live by zJay",
   "description": "直接在渲染后的 Markdown 中编辑，支持局部源码、公式、图表和脚注。",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "publisher": "zJay",
   "author": {
     "name": "zJay",

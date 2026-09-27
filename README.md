@@ -30,25 +30,11 @@
 
 ## 功能演示
 
-### 直接写在排版后的正文里
+**打开即写 → 大纲导航与公式图表 → 局部源码。** 用半分钟，跟随同一篇 Markdown 连续完成写作、导航和源码修改。
 
-在 VS Code 打开 Markdown，点击右上角的 Markdown Live 按钮。直接输入、选中文字、点击加粗，让写作留在排版后的正文里。
+![打开 Markdown Live 并直接写作，通过大纲编辑公式和图表，最后修改局部源码](https://raw.githubusercontent.com/zJay26/vscode-markdown-live/7e94a52aaf138b08d8cfe054d6707924a97b604c/docs/demo/overview.gif)
 
-![从 VS Code 打开 Markdown Live，展开大纲并直接编辑正文](https://raw.githubusercontent.com/zJay26/vscode-markdown-live/ffa20c4ca0dd5b095ffc2bf708dba5e04a641e2b/docs/demo/writing.gif)
-
-### 需要源码时，只展开这一段
-
-打开段落源码，修改 Markdown 标记，再返回排版。周围的内容始终保留阅读状态。
-
-![展开段落源码、修改 Markdown 并返回排版](https://raw.githubusercontent.com/zJay26/vscode-markdown-live/ffa20c4ca0dd5b095ffc2bf708dba5e04a641e2b/docs/demo/source.gif)
-
-### 用大纲定位，用公式与图表表达
-
-点击大纲直达章节，就地打开 LaTeX / Mermaid。选择求和公式或时序图模板，即时查看结果，继续整理技术笔记。
-
-![通过大纲跳转，插入求和公式并切换 Mermaid 时序图](https://raw.githubusercontent.com/zJay26/vscode-markdown-live/ffa20c4ca0dd5b095ffc2bf708dba5e04a641e2b/docs/demo/math-diagram.gif)
-
-<sub>三段动图录自真实 VS Code 窗口，使用独立配置与[公开示例文档](docs/demo/sample.md)。编辑器大纲始终展开，节奏经过压缩并保留阅读停顿；不包含个人文件。录制方式与验证范围见[素材说明](docs/demo/README.md)和[验证记录](VALIDATION.md)。</sub>
+<sub>开场为仿 VS Code 源码界面，后续使用真实编辑器的浏览器预览与[公开示例文档](docs/demo/sample.md)。大纲在编辑器场景中始终展开；演示节奏经过编排，不包含个人文件。制作方式见[素材说明](docs/demo/README.md)，功能验证范围见[验证记录](VALIDATION.md)。</sub>
 
 <details>
 <summary>明暗主题静态预览</summary>

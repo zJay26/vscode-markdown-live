@@ -30,25 +30,11 @@
 
 ## Demos
 
-### Write directly in the rendered page
+**Open and write → navigate, edit math and diagrams → refine a block's source.** Follow one document through a continuous half-minute workflow, with the outline visible throughout the editor scenes.
 
-Open a Markdown file in VS Code and click the Markdown Live button in the editor title bar. Type, select text, and make it bold directly in the rendered page.
+![Open Markdown Live, write directly, navigate to math and diagrams, then edit a block's source](https://raw.githubusercontent.com/zJay26/vscode-markdown-live/7e94a52aaf138b08d8cfe054d6707924a97b604c/docs/demo/overview.gif)
 
-![Opening Markdown Live from VS Code and editing with the outline visible](https://raw.githubusercontent.com/zJay26/vscode-markdown-live/ffa20c4ca0dd5b095ffc2bf708dba5e04a641e2b/docs/demo/writing.gif)
-
-### Open just the source you need
-
-Expand one block, edit its Markdown, then return to the rendered view. The surrounding document stays readable.
-
-![Opening a block's source, editing Markdown and returning to the rendered page](https://raw.githubusercontent.com/zJay26/vscode-markdown-live/ffa20c4ca0dd5b095ffc2bf708dba5e04a641e2b/docs/demo/source.gif)
-
-### Navigate with the outline. Explain with math and diagrams.
-
-Jump to a section through the outline and open LaTeX / Mermaid in place. Choose a summation or sequence diagram template, see the result, and keep building your technical notes.
-
-![Outline navigation, a summation template and a Mermaid sequence diagram](https://raw.githubusercontent.com/zJay26/vscode-markdown-live/ffa20c4ca0dd5b095ffc2bf708dba5e04a641e2b/docs/demo/math-diagram.gif)
-
-<sub>All three demos show a real VS Code window, an isolated profile and a [public sample document](docs/demo/sample.md). The editor outline stays open. Timing is shortened while retaining reading pauses; no personal files are shown. See the [capture notes](docs/demo/README.md) and [validation records](VALIDATION.md). The editor UI is currently in Chinese.</sub>
+<sub>The opening simulates VS Code's source editor. The remaining scenes use the real editor's browser preview and a [public sample document](docs/demo/sample.md). Timing is choreographed for the demonstration; no personal files are shown. See the [capture notes](docs/demo/README.md) and [validation records](VALIDATION.md). The editor UI is currently in Chinese.</sub>
 
 <details>
 <summary>Static light and dark theme preview</summary>
