@@ -32,23 +32,23 @@
 
 ### Write directly in the rendered page
 
-Type a sentence, select text, and make it bold. Everyday editing happens right where you are reading.
+Open a Markdown file in VS Code and click the Markdown Live button in the editor title bar. Type, select text, and make it bold directly in the rendered page.
 
-![Direct text editing, text selection and bold formatting](https://raw.githubusercontent.com/zJay26/vscode-markdown-live/main/docs/demo/writing.gif)
+![Opening Markdown Live from VS Code and editing with the outline visible](https://raw.githubusercontent.com/zJay26/vscode-markdown-live/ffa20c4ca0dd5b095ffc2bf708dba5e04a641e2b/docs/demo/writing.gif)
 
 ### Open just the source you need
 
 Expand one block, edit its Markdown, then return to the rendered view. The surrounding document stays readable.
 
-![Opening a block's source, editing Markdown and returning to the rendered page](https://raw.githubusercontent.com/zJay26/vscode-markdown-live/main/docs/demo/source.gif)
+![Opening a block's source, editing Markdown and returning to the rendered page](https://raw.githubusercontent.com/zJay26/vscode-markdown-live/ffa20c4ca0dd5b095ffc2bf708dba5e04a641e2b/docs/demo/source.gif)
 
-### Edit math and diagrams in place
+### Navigate with the outline. Explain with math and diagrams.
 
-Click a formula or diagram to adjust its LaTeX / Mermaid. Return to the document when you are ready to continue writing.
+Jump to a section through the outline and open LaTeX / Mermaid in place. Choose a summation or sequence diagram template, see the result, and keep building your technical notes.
 
-![Editing a LaTeX formula and a Mermaid flowchart in place](https://raw.githubusercontent.com/zJay26/vscode-markdown-live/main/docs/demo/math-diagram.gif)
+![Outline navigation, a summation template and a Mermaid sequence diagram](https://raw.githubusercontent.com/zJay26/vscode-markdown-live/ffa20c4ca0dd5b095ffc2bf708dba5e04a641e2b/docs/demo/math-diagram.gif)
 
-<sub>Recorded from the actual editor in standalone browser preview mode with public sample documents, enlarged text and pauses for typing and reading. Browser preview does not write workspace files. See [validation records](VALIDATION.md) for extension-host checks. The editor UI is currently in Chinese.</sub>
+<sub>All three demos show a real VS Code window, an isolated profile and a [public sample document](docs/demo/sample.md). The editor outline stays open. Timing is shortened while retaining reading pauses; no personal files are shown. See the [capture notes](docs/demo/README.md) and [validation records](VALIDATION.md). The editor UI is currently in Chinese.</sub>
 
 <details>
 <summary>Static light and dark theme preview</summary>
