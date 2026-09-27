@@ -5,24 +5,44 @@
 <title>Markdown Live — 功能演示</title>
 <style>
 /* Documentation capture only: keep source readable when a GIF is scaled in README. */
-#app .cm-editor { font-size: 22px !important; line-height: 1.55; }
+#app .cm-editor { font-size: 21px !important; line-height: 1.6; }
+.demo-vscode { position:fixed; inset:0; z-index:1000; background:#fff; color:#31363d; font:13px 'Segoe UI','Microsoft YaHei',sans-serif; display:grid; grid-template-columns:48px 185px 1fr; grid-template-rows:36px 40px 1fr 24px; }
+.demo-vscode[hidden] { display:none; }
+.demo-titlebar { grid-column:1/-1; display:flex; align-items:center; gap:22px; padding:0 15px; background:#f4f4f4; border-bottom:1px solid #e5e5e5; font-size:12px; }
+.demo-titlebar b { color:#1684c7; font-size:18px; }.demo-titlebar .demo-command { margin:auto; padding:3px 115px; background:#ebebeb; border:1px solid #ddd; border-radius:6px; color:#777; }.demo-window-controls { letter-spacing:20px; color:#555; }
+.demo-activity { grid-row:2/4; background:#f8f8f8; border-right:1px solid #e8e8e8; display:flex; align-items:center; flex-direction:column; gap:28px; padding-top:15px; color:#5d646d; font-size:22px; }
+.demo-explorer { grid-row:2/4; background:#f8f8f8; border-right:1px solid #e5e5e5; }.demo-explorer-title { padding:13px 18px; font-size:11px; }.demo-folder { margin-top:11px; padding:8px 12px; font-size:11px; font-weight:600; }.demo-file { padding:7px 18px 7px 24px; }.demo-file.active { background:#e4e9f0; }.demo-file i { color:#487eab; font-style:normal; margin-right:6px; }
+.demo-tabs { grid-column:3; display:flex; align-items:center; background:#f8f8f8; border-bottom:1px solid #e5e5e5; }.demo-tab { height:40px; display:flex; gap:13px; align-items:center; padding:0 18px; background:#fff; border-top:2px solid #2789cf; border-right:1px solid #e5e5e5; }.demo-tab b { color:#5683af; font-size:12px; }.demo-tab span { padding-left:10px; color:#888; }.demo-editor-actions { display:flex; margin-left:auto; align-items:center; gap:13px; padding:0 14px; }.demo-editor-actions button { min-width:28px; height:28px; padding:3px; border:0; border-radius:4px; background:transparent; }.demo-editor-actions button:hover { background:#e5e8ec; }.demo-editor-actions img { display:block; width:22px; height:22px; }.demo-editor-actions .demo-muted { font-size:17px; color:#6b727b; }
+#demo-source { grid-column:3; grid-row:3; overflow:hidden; }#demo-source .cm-editor { height:100%; font:19px/1.65 Consolas,'Microsoft YaHei',monospace; }#demo-source .cm-content { padding:14px 0; }#demo-source .cm-line { padding-left:14px; }#demo-source .cm-gutters { border:0; background:#fff; color:#9a9a9a; font-size:16px; }#demo-source .cm-gutterElement { padding:0 10px 0 20px; }
+.demo-statusbar { grid-column:1/-1; display:flex; align-items:center; gap:16px; padding:0 14px; background:#f3f3f3; border-top:1px solid #e5e5e5; font-size:11px; color:#676c72; }.demo-statusbar span:last-child { margin-left:auto; }
 </style>
 <div id="app"></div>
 <script type="module">
 // Documentation fixture only. Uses the real editor, with a public sample document.
 // This file is excluded from both the production Vite entry and VSIX.
 import '/src/webview/main.ts';
-const samples = {
-  writing: '# 把想法写下来\n\n直接在正文中编辑，让思路留在文字里。\n\n## 今日计划\n\n- [ ] 整理研究笔记\n- [ ] 完成第一版草稿\n\n> 文件仍然是普通 Markdown。\n',
-  source: '# 排版与源码，随时切换\n\n需要精确控制时，只展开当前段落。\n\n这一段保留排版视图，让你专注于眼前的修改。\n',
-  math: '# 技术笔记，也能直接改\n\n## 写下一个公式\n\n$$\nE = mc^2\n$$\n\n## 梳理一个流程\n\n```mermaid\nflowchart LR\n A[阅读] --> B[编辑]\n B --> C[保存]\n```\n',
-};
-const key = new URLSearchParams(location.search).get('scene') || 'writing';
-const text = samples[key] || samples.writing;
+import text from '/docs/demo/sample.md?raw';
+import { EditorView, lineNumbers } from '@codemirror/view';
+import { EditorState } from '@codemirror/state';
+import { markdown } from '@codemirror/lang-markdown';
+import { syntaxHighlighting, HighlightStyle } from '@codemirror/language';
+import { tags } from '@lezer/highlight';
+if (new URLSearchParams(location.search).get('scene') === 'writing') {
+  // An explicitly simulated VS Code introduction, requested for this demo.
+  // The content pane is a real CodeMirror Markdown view of the public sample.
+  const intro = document.createElement('section');
+  intro.className = 'demo-vscode';
+  intro.innerHTML = `<div class="demo-titlebar"><b>◀</b><span>文件　 编辑　 查看　 转到　 运行　 终端　 帮助</span><div class="demo-command">⌕　Markdown Live</div><span class="demo-window-controls">－ □ ×</span></div><div class="demo-activity"><span>▱</span><span>⌕</span><span>⑂</span><span>▷</span><span>⊞</span></div><aside class="demo-explorer"><div class="demo-explorer-title">资源管理器</div><div class="demo-folder">⌄　MARKDOWN LIVE</div><div class="demo-file active"><i>M↓</i> 灵感手记.md</div><div class="demo-file"><i>M↓</i> README.md</div><div class="demo-file">›　assets</div></aside><div class="demo-tabs"><div class="demo-tab"><b>M↓</b>灵感手记.md<span>×</span></div><div class="demo-editor-actions"><button id="demo-open-live" aria-label="Markdown Live: 打开可视化编辑" title="Markdown Live: 打开可视化编辑"><img src="/media/markdown-live-icon.png" alt="Markdown Live"></button><span class="demo-muted">▣</span><span class="demo-muted">⋯</span></div></div><div id="demo-source"></div><div class="demo-statusbar"><span>⑂ main</span><span>✓</span><span>UTF-8　　LF　　Markdown　　⌁</span></div>`;
+  document.body.append(intro);
+  const sourceColors = HighlightStyle.define([{tag:tags.heading,color:'#245b91',fontWeight:'600'},{tag:tags.quote,color:'#63746a'},{tag:tags.strong,fontWeight:'600',color:'#263d68'},{tag:tags.monospace,color:'#a33d25'},{tag:tags.processingInstruction,color:'#777'}]);
+  new EditorView({parent:document.querySelector('#demo-source'),state:EditorState.create({doc:text,extensions:[lineNumbers(),markdown(),syntaxHighlighting(sourceColors),EditorView.editable.of(false)]})});
+  document.querySelector('#demo-open-live').onclick = () => intro.hidden = true;
+}
 function start() {
   if (!window.markdownLiveTest) return requestAnimationFrame(start);
   window.markdownLiveTest.setDocument(text);
-  window.dispatchEvent(new MessageEvent('message', {data:{type:'document', text, version:2, name:'写作笔记.md', dirty:false, settings:{fontSize:22,lineHeight:1.8,contentWidth:940,assetsDirectory:'assets/${documentName}'}}}));
+  window.dispatchEvent(new MessageEvent('message', {data:{type:'document', text, version:2, name:'灵感手记.md', dirty:false, settings:{fontSize:22,lineHeight:1.7,contentWidth:940,assetsDirectory:'assets/${documentName}'}}}));
+  document.querySelector('[data-action="outline"]').click();
 }
 requestAnimationFrame(start);
 </script>

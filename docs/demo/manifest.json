@@ -1,221 +1,41 @@
 {
-  "capturedAt": "2026-09-27",
-  "extensionVersion": "0.2.5",
-  "capture": "Real Windows VS Code window with the Marketplace extension, an isolated profile and docs/demo/sample.md; outline open in every editor scene; screenshots retimed with faster input and readable result holds.",
-  "clips": [
+  "createdAt": "2026-09-27T13:48:55.655Z",
+  "status": "approved-for-release",
+  "published": false,
+  "extensionVersion": "0.2.6",
+  "capture": "A single browser page and document, simulated VS Code opening followed by actual editor actions. Prior edits persist through writing, outline navigation, math/diagram templates and local source editing. 50fps eased pointer/scroll motion; the loop fades through matching background frames.",
+  "continuous": true,
+  "pageLoads": 1,
+  "documentResets": 0,
+  "caret": "steady-native",
+  "file": "overview.gif",
+  "video": "overview.mp4",
+  "width": 1920,
+  "height": 1284,
+  "fps": 50,
+  "seconds": 30.02,
+  "encodedFrames": 1501,
+  "sourceFrames": 919,
+  "bytes": 8412448,
+  "sha256": "f5e9f62dc81e9186bd1ec938ca5f48c43fe92c80323ba9a2ed39e8836d3c357b",
+  "order": [
+    1,
+    3,
+    2
+  ],
+  "checkpoints": [
     {
-      "name": "writing",
-      "title": "从 VS Code 打开 Markdown Live，直接写作",
-      "file": "writing.gif",
-      "width": 1026,
-      "height": 826,
-      "seconds": 8.04,
-      "plannedSeconds": 7.99,
-      "sourceFrames": 12,
-      "bytes": 383389,
-      "frames": [
-        {
-          "file": "v3/writing-00-source.jpg",
-          "duration": 1.4,
-          "caption": "在 VS Code 打开 Markdown，点击右上角 Markdown Live"
-        },
-        {
-          "file": "v3/writing-01-open.jpg",
-          "duration": 1.1,
-          "caption": "进入可视化编辑，大纲保持展开"
-        },
-        {
-          "file": "v3/writing-02-caret.jpg",
-          "duration": 0.35,
-          "caption": "直接在排版后的正文中输入"
-        },
-        {
-          "file": "v3/writing-03-newline.jpg",
-          "duration": 0.2,
-          "caption": "直接在排版后的正文中输入"
-        },
-        {
-          "file": "v3/writing-04-type.jpg",
-          "duration": 0.28,
-          "caption": "直接在排版后的正文中输入"
-        },
-        {
-          "file": "v3/writing-05-type.jpg",
-          "duration": 0.28,
-          "caption": "直接在排版后的正文中输入"
-        },
-        {
-          "file": "v3/writing-06-type.jpg",
-          "duration": 0.28,
-          "caption": "直接在排版后的正文中输入"
-        },
-        {
-          "file": "v3/writing-07-type.jpg",
-          "duration": 0.6,
-          "caption": "直接在排版后的正文中输入"
-        },
-        {
-          "file": "v3/writing-08-select.jpg",
-          "duration": 0.65,
-          "caption": "选中文字，点击加粗"
-        },
-        {
-          "file": "v3/writing-09-bold.jpg",
-          "duration": 0.65,
-          "caption": "选中文字，点击加粗"
-        },
-        {
-          "file": "v3/writing-10-result.jpg",
-          "duration": 0.8,
-          "caption": "所见即所得，保存为普通 Markdown"
-        },
-        {
-          "file": "v3/writing-11-saved.jpg",
-          "duration": 1.4,
-          "caption": "所见即所得，保存为普通 Markdown"
-        }
-      ]
+      "name": "writing-complete",
+      "at": 7.4
     },
     {
-      "name": "source",
-      "title": "只展开需要修改的那一段",
-      "file": "source.gif",
-      "width": 1026,
-      "height": 826,
-      "seconds": 6.6,
-      "plannedSeconds": 6.56,
-      "sourceFrames": 10,
-      "bytes": 270471,
-      "frames": [
-        {
-          "file": "v3/source-10-start.jpg",
-          "duration": 1.1,
-          "caption": "保留表格与大纲，只展开当前段落"
-        },
-        {
-          "file": "v3/source-11-open.jpg",
-          "duration": 0.9,
-          "caption": "点击段落旁的源码按钮"
-        },
-        {
-          "file": "v3/source-12-end.jpg",
-          "duration": 0.3,
-          "caption": "直接修改 Markdown 标记"
-        },
-        {
-          "file": "v3/source-13-mark.jpg",
-          "duration": 0.35,
-          "caption": "直接修改 Markdown 标记"
-        },
-        {
-          "file": "v3/source-14-type.jpg",
-          "duration": 0.28,
-          "caption": "直接修改 Markdown 标记"
-        },
-        {
-          "file": "v3/source-15-type.jpg",
-          "duration": 0.28,
-          "caption": "直接修改 Markdown 标记"
-        },
-        {
-          "file": "v3/source-16-type.jpg",
-          "duration": 0.2,
-          "caption": "直接修改 Markdown 标记"
-        },
-        {
-          "file": "v3/source-17-mark.jpg",
-          "duration": 0.85,
-          "caption": "直接修改 Markdown 标记"
-        },
-        {
-          "file": "v3/source-18-result.jpg",
-          "duration": 0.8,
-          "caption": "点击完成，立即返回排版"
-        },
-        {
-          "file": "v3/source-19-saved.jpg",
-          "duration": 1.5,
-          "caption": "上下文始终可见，思路保持连贯"
-        }
-      ]
+      "name": "math-diagram-complete",
+      "at": 19.88
     },
     {
-      "name": "math-diagram",
-      "title": "大纲导航，公式与图表模板",
-      "file": "math-diagram.gif",
-      "width": 1026,
-      "height": 826,
-      "seconds": 11.64,
-      "plannedSeconds": 11.6,
-      "sourceFrames": 13,
-      "bytes": 604879,
-      "frames": [
-        {
-          "file": "v3/math-10-start.jpg",
-          "duration": 1.1,
-          "caption": "从文末点击大纲，直达公式章节"
-        },
-        {
-          "file": "v3/math-11-navigate.jpg",
-          "duration": 1.1,
-          "caption": "从文末点击大纲，直达公式章节"
-        },
-        {
-          "file": "v3/math-12-open.jpg",
-          "duration": 0.8,
-          "caption": "点击公式，就地打开 LaTeX"
-        },
-        {
-          "file": "v3/math-13-menu.jpg",
-          "duration": 0.8,
-          "caption": "选择求和模板，即时查看排版"
-        },
-        {
-          "file": "v3/math-14-template.jpg",
-          "duration": 1.2,
-          "caption": "选择求和模板，即时查看排版"
-        },
-        {
-          "file": "v3/math-15-result.jpg",
-          "duration": 0.7,
-          "caption": "公式写进笔记，继续整理流程"
-        },
-        {
-          "file": "v3/math-16-outline-flow.jpg",
-          "duration": 0.45,
-          "caption": "点击图表，展开 Mermaid 源码"
-        },
-        {
-          "file": "v3/math-17-diagram-open.jpg",
-          "duration": 0.35,
-          "caption": "点击图表，展开 Mermaid 源码"
-        },
-        {
-          "file": "v3/math-18-diagram-source.jpg",
-          "duration": 0.85,
-          "caption": "选择图表模板，快速表达思路"
-        },
-        {
-          "file": "v3/math-19-diagram-menu.jpg",
-          "duration": 0.75,
-          "caption": "选择图表模板，快速表达思路"
-        },
-        {
-          "file": "v3/math-20-sequence.jpg",
-          "duration": 1.2,
-          "caption": "切换时序图，清晰呈现消息与回复"
-        },
-        {
-          "file": "v3/math-21-result.jpg",
-          "duration": 0.7,
-          "caption": "切换时序图，清晰呈现消息与回复"
-        },
-        {
-          "file": "v3/math-22-saved.jpg",
-          "duration": 1.6,
-          "caption": "大纲、公式、图表，都在同一篇 Markdown 中"
-        }
-      ]
+      "name": "source-complete",
+      "at": 29.42
     }
-  ]
+  ],
+  "approvedAt": "2026-09-27T14:07:49.444Z"
 }
