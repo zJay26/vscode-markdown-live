@@ -3,7 +3,7 @@
 ## 0.2.4
 
 - 修复 Pandoc `::: {custom-style="Figure"}` / `Caption` 围栏被显示为正文的问题；支持嵌套容器、图注排版和直接编辑，回写时保留围栏、属性和未修改源码。代码示例中的围栏保持原样。
-- 准备 Visual Studio Marketplace 发布，发布者更新为 `zJay`，扩展 ID 为 `zJay.markdown-live-zjay`。
+- 发布至 Visual Studio Marketplace，发布者更新为 `zJay`，扩展 ID 为 `zJay.markdown-live-zjay`。
 - 补充商店安装、旧本地版迁移与商店页面图片链接；保留现有命令、设置键和编辑功能。
 - 原 `markdown-live-local.markdown-live` 用户需安装新扩展，并禁用或卸载旧版以避免重复入口。
 

@@ -1,0 +1,22 @@
+name: 功能建议 / Feature request
+description: 描述一个具体的写作场景或改进想法。
+title: "[Feature] "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 你想解决什么问题 / The problem
+      description: 描述写作过程中遇到的阻碍，以及现在如何处理。
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 期望的操作或结果 / Proposed behavior
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: 示例与替代方案 / Examples and alternatives
+      description: 可附公开的 Markdown 示例、草图或参考链接。

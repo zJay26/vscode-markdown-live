@@ -1,109 +1,132 @@
-# Markdown Live · by zJay
+<p align="center">
+  <a href="https://marketplace.visualstudio.com/items?itemName=zJay.markdown-live-zjay">
+    <img src="https://raw.githubusercontent.com/zJay26/vscode-markdown-preview/main/media/markdown-live-icon.png" width="144" height="144" alt="Markdown Live：柔和的 Z、MD 与正文选区" />
+  </a>
+</p>
 
-<img src="https://raw.githubusercontent.com/zJay26/vscode-markdown-preview/6b213c8eb1e582c49792c5c48d54f676be671156/media/markdown-live-icon.png" width="96" height="96" alt="Markdown Live · by zJay 图标">
+<h1 align="center">Markdown Live · by zJay</h1>
 
-在 VS Code 的渲染界面中直接阅读和修改 Markdown，保留普通 `.md` 文件与原生保存、撤销、文件管理工作流。
+<p align="center">
+  <strong>看见文字的样子，也保有源码的自由。</strong><br />
+  在 VS Code 中直接编辑排版后的 Markdown。
+</p>
 
-![编辑界面](https://raw.githubusercontent.com/zJay26/vscode-markdown-preview/6b213c8eb1e582c49792c5c48d54f676be671156/docs/images/editor-light.png)
+<p align="center">
+  <a href="https://marketplace.visualstudio.com/items?itemName=zJay.markdown-live-zjay"><img src="https://img.shields.io/badge/Marketplace-install-2767df?style=flat-square" alt="从 Marketplace 安装" /></a>
+  <a href="https://github.com/zJay26/vscode-markdown-preview/actions/workflows/ci.yml"><img src="https://github.com/zJay26/vscode-markdown-preview/actions/workflows/ci.yml/badge.svg" alt="类型检查、核心测试与构建" /></a>
+  <img src="https://img.shields.io/badge/VS_Code-1.96%2B-2767df?style=flat-square" alt="VS Code 1.96 或更高" />
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-23956f?style=flat-square" alt="MIT License" /></a>
+</p>
 
-## 安装和使用
+<p align="center">
+  <strong>简体中文</strong> · <a href="README.en.md">English</a><br />
+  <a href="https://marketplace.visualstudio.com/items?itemName=zJay.markdown-live-zjay"><strong>安装扩展</strong></a> ·
+  <a href="#界面预览">界面预览</a> ·
+  <a href="docs/usage.md">使用指南</a> ·
+  <a href="CHANGELOG.md">更新记录</a> ·
+  <a href="https://github.com/zJay26/vscode-markdown-preview/issues/new/choose">反馈问题</a>
+</p>
 
-1. 在 VS Code 扩展面板搜索 `@id:zJay.markdown-live-zjay`，或打开 [Visual Studio Marketplace 页面](https://marketplace.visualstudio.com/items?itemName=zJay.markdown-live-zjay) 安装。也可在扩展菜单中选择 **Install from VSIX…** 安装本地构建的 `artifacts/markdown-live-zjay-0.2.4.vsix`；[GitHub Releases](https://github.com/zJay26/vscode-markdown-preview/releases/latest) 提供此前发布的版本。
-2. 打开 `.md` 或 `.markdown` 文件，点击编辑器标题栏最左侧蓝色 **Z／MD 文档**图标（**Markdown Live · by zJay: 打开可视化编辑**），或在源码编辑器中按 **Ctrl+Shift+V**（macOS：**⌘+Shift+V**）。也可右键编辑器标签 → **Reopen Editor With… → Markdown Live · by zJay**。
-3. 直接点击正文开始修改。插件不会自动更改已有的默认编辑器关联；可在 Reopen Editor With 菜单中自行设为默认。
+## 界面预览
 
-Remote WSL：在 WSL 窗口中安装同一 VSIX。插件运行在 workspace 扩展宿主，图片保存在 Markdown 所在的 WSL 文件系统中，不会写入同名 Windows 路径。
+**读到哪里，就改到哪里。** 直接选中排版后的正文、修改表格、调整公式；需要精确控制标记时，只展开当前段落的源码。
 
-无需安装其他第三方 Markdown 扩展。扩展 ID 为 `zJay.markdown-live-zjay`；若标题栏入口消失，先确认当前 VS Code 配置及本地 / WSL 环境中仍安装并启用了 Markdown Live · by zJay。也可在资源管理器右键 Markdown 文件，或用命令面板执行 **Markdown Live · by zJay: 打开可视化编辑**。标题栏入口同时按 Markdown 语言及 `.md` / `.markdown` 后缀识别文件。
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/zJay26/vscode-markdown-preview/main/docs/images/editor-dark.png" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/zJay26/vscode-markdown-preview/main/docs/images/editor-light.png" />
+  <img src="https://raw.githubusercontent.com/zJay26/vscode-markdown-preview/main/docs/images/editor-light.png" alt="Markdown Live 实际界面：选中正文直接排版，左侧大纲导航，下方包含公式、表格与任务清单" />
+</picture>
 
-**从旧本地版迁移：** 0.2.3 及更早版本使用 `markdown-live-local.markdown-live`，不会作为同一扩展自动更新为商店版。请安装 `zJay.markdown-live-zjay`，并禁用或卸载旧版，避免命令和入口重复；Windows 与 Remote WSL 环境分别处理。Markdown 文件与图片无需转换，`markdownLive.*` 设置键和 `markdownLive.editor` 编辑器关联保持不变。
+<p align="center"><sub>正文编辑 · 选区工具栏 · 章节大纲 · 明暗主题</sub></p>
 
-**快捷键说明：** Ctrl+Shift+V 在 Markdown 源码编辑器中优先打开 Markdown Live；其他类型文件和终端不受此绑定影响。VS Code 内置的“打开侧边预览”仍可用 Ctrl+K，再按 V 调用。若想改用其他组合，在“键盘快捷方式”（Ctrl+K Ctrl+S）中搜索 `markdownLive.open`；用户自定义绑定优先于扩展默认值。
+<details>
+<summary><strong>需要源码时，只展开这一段</strong></summary>
 
-Release 同时提供源码压缩包与 `SHA256SUMS.txt` 校验文件。本地构建的安装包输出到 `artifacts/`。
+点击“段落源码”或按 `Ctrl+Shift+M`，就地修改 Markdown。按 `Esc` / `Ctrl+Enter` 回到排版，整篇源码也可在旁边的原生编辑器中打开。
 
-### 常用操作
+![段落源码直接嵌入正文，周围仍保持排版视图](https://raw.githubusercontent.com/zJay26/vscode-markdown-preview/main/docs/images/inline-source.png)
 
-| 操作 | 方法 |
-| --- | --- |
-| 排版 | 使用常驻排版工具栏或选中文字后的浮动工具栏；`Ctrl+B` 粗体，`Ctrl+I` 斜体；支持正文与 1–6 级标题 |
-| 标题、列表、引用 | 输入 `# `、`- `、`1. `、`> `；也可从顶部“插入”菜单选择 |
-| 插入内容 | 空段落输入 `/`，或点击顶部“＋ 插入” |
-| 段落源码 | 点击段落左侧 `‹/›`、顶部“段落源码”，或 `Ctrl+Shift+M`；`Esc` / `Ctrl+Enter` 返回 |
-| 整篇源码 | “打开源码 ↗”在旁边打开原生编辑器，定位到当前段落 |
-| 保存 / 撤销 | `Ctrl+S` / `Ctrl+Z` / `Ctrl+Shift+Z`，共用 VS Code 文档历史 |
-| 链接 | 选中文字后 `Ctrl+K`；按住 Ctrl 点击链接可打开；编辑时清空地址可移除链接 |
-| 表格 | 直接编辑单元格，Tab 移动；底部工具条添加、删除行列及设置整列对齐 |
-| 图片 | 直接粘贴截图或拖入图片文件；双击图片修改路径、替代文字和标题 |
-| 公式 / 图表 | 点击渲染结果，就地输入 LaTeX 或 Mermaid；内置常用模板 |
-| 脚注 | 插入菜单添加；点击引用跳到定义，“返回引用”返回正文 |
-| 查找替换 | `Ctrl+F` / `Ctrl+H`；针对完整 Markdown 源码搜索，支持区分大小写、全字匹配和批量替换 |
-| 大纲导航 | `Ctrl+Shift+O`；筛选章节、查看当前章节和阅读进度 |
-| 专注写作 | `Ctrl+Shift+F` 隐藏工具与大纲；再次按快捷键或点击“退出专注”返回 |
-| 内容缩放 | 在正文区域按住 `Ctrl` 滚动鼠标滚轮，上滚放大、下滚缩小（50%–200%）；点击底部比例恢复 100%。正文、公式、图片和局部源码一起缩放，工具栏保持原大小 |
-| 复制内容 | 代码块右上角复制代码；排版工具栏复制整篇 Markdown |
-| 快捷键帮助 | 顶部 `?` 查看完整快捷键表；macOS 将 Ctrl 换为 ⌘ |
+</details>
 
-状态栏显示中西文混合字词数、非空白字符数、预计阅读时间、选区字符数和任务完成进度。字词与阅读时间不含代码块、原始 HTML、frontmatter 等源码块；中日韩文字按字符统计，其他语言按单词统计，阅读时间只是估算。
+<sub>截图来自 0.2.4 真实 Webview 的独立浏览器预览，使用示例文档；不包含私人文件。VS Code 宿主与安装包的验证范围见 [验证记录](VALIDATION.md)。</sub>
 
-文档右上角区分“未保存”“保存中”“已保存”，对应真实 VS Code 文档状态；同步到编辑器并不等于写入磁盘。大纲、专注模式和内容缩放比例随当前 Webview 状态保存，可在视图重载后恢复；缩放不修改 Markdown 或全局字号设置。窄窗口的大纲作为侧栏展开，选择章节后收起。
+## 三步开始写作
 
-查找使用字面文本，替换内容中的 `$`、反斜杠等也按原文写入；不解析正则表达式。Enter / Shift+Enter 跳到下一个 / 上一个匹配所在段落。正文显示匹配高亮，源码中的公式和定义也计入匹配数。全字匹配按 Unicode 字母、数字、组合标记和下划线判断边界。
+1. 在 [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=zJay.markdown-live-zjay) 安装，或在 VS Code 扩展面板搜索 `@id:zJay.markdown-live-zjay`。
+2. 打开 `.md` / `.markdown` 文件，点击标题栏蓝色 **Z／MD** 图标，或在源码编辑器中按 **Ctrl+Shift+V**。
+3. 点击正文开始编辑，用 **Ctrl+S** 保存。需要调整格式时，选中文字或使用顶部工具栏。
 
-正文中文输入法组合输入期间不发送中间文本。公式或图表暂时无效时显示就地提示，源码仍会保留。
-
-### 内容与兼容范围
-
-- CommonMark 常用结构，以及 GFM 表格、任务清单、删除线、自动链接和脚注。
-- 支持成对的 Pandoc fenced Div（`::: {custom-style="Caption"}` / `:::`），包括嵌套、类名和属性。围栏在排版中隐藏，Figure 居中、Caption 使用图注排版，内容可直接编辑；局部源码仍可查看和修改完整围栏。其他自定义样式保留属性并显示内容，不读取 Word 模板样式；不完整围栏保留为可见文字。
-- 行内 `$…$` / 块级 `$$…$$` 数学公式使用 KaTeX；`mermaid` 代码围栏使用 Mermaid。
-- YAML/TOML frontmatter、原始 HTML、链接定义以源码块显示和编辑。HTML 不执行脚本。
-- 表格使用 Markdown 可表达的结构，不支持合并单元格和单元格内多段落。
-- 文献引用支持普通链接、手写引用及脚注；不连接 BibTeX 或 Zotero。
-- 不提供 PDF/Word 导出、公式结构化输入或图表拖拽设计。
-
-### 文件保留和冲突恢复
-
-打开、浏览和模式切换不会重新格式化文件。修改通过源码范围与语法树对应关系生成局部文本补丁；未编辑块保留原始标记、空行、CRLF/LF、注释和引用定义。被修改的结构在必要时会采用标准 Markdown 格式。
-
-外部编辑会同步到界面。过期版本的非重叠修改会尝试合并；重叠时停止提交，保留待恢复草稿，通过“比较并保留草稿”打开差异视图。“采用文件版本”也会先保留草稿，再载入文件。等待宿主确认时继续输入的内容也保存为草稿；重载后尚未同步的草稿（包括清空全文）会提示恢复。
-
-图片默认保存到 `assets/<文档名>/`，生成不冲突的文件名，成功写入后插入相对路径。撤销插图不会删除资源文件。未命名文件需要先保存；单张图片上限 25 MB。
-
-### 配置
-
-| 设置 | 默认值 | 含义 |
-| --- | --- | --- |
-| `markdownLive.fontSize` | `16` | 正文字号，px |
-| `markdownLive.lineHeight` | `1.7` | 行高倍数 |
-| `markdownLive.contentWidth` | `900` | 正文最大宽度，px |
-| `markdownLive.assetsDirectory` | `assets/${documentName}` | 文档目录内的图片相对目录 |
-
-编辑区跟随 VS Code 明暗和高对比度主题。字体、脚本与渲染库随扩展打包；核心编辑不依赖网络。文档自己引用的远程图片需要相应网络连接。
-
-## 开发
-
-需要 Node.js 22+、npm，以及 VS Code 1.96.3 或更高版本。
+也可以在终端安装：
 
 ```sh
-npm ci
-npm run typecheck
-npm test
-npm run test:e2e
-npm run build
-npm run test:host
-npm run package
+code --install-extension zJay.markdown-live-zjay
 ```
 
-- `npm run dev`：独立浏览器预览，使用浏览器本地存储保存演示文档和撤销结果。此模式不写入工作区，不代表 VS Code 宿主验证；存储不可用时提示“仅本次预览”。
-- `test:e2e`：默认使用本机 Microsoft Edge 和专用端口 4186（可用 `MARKDOWN_LIVE_TEST_PORT` 覆盖），不复用已有服务，输出 `artifacts/playwright-report.json` 与界面截图。
-- `test:host`：默认使用当前机器的 VS Code 安装路径；其他机器通过 `VSCODE_EXECUTABLE` 指定可执行文件，测试使用 `.local-test/` 下的隔离目录。
-- 包内不携带 `node_modules`；生产依赖已打包到 `dist/`。
+Windows 与 Remote WSL 均可使用；WSL 窗口需在对应环境安装扩展。插件不会自动修改默认编辑器关联，内置侧边预览仍可用 `Ctrl+K V` 打开。macOS 快捷键使用 `⌘` 代替 `Ctrl`，实际宿主验证范围以 [VALIDATION.md](VALIDATION.md) 为准。
 
-架构：VS Code `CustomTextEditorProvider` → 带版本号的事务通道 → Milkdown 提供的 ProseMirror 模块；remark 负责语法树与源码范围映射，CodeMirror 6 负责就地源码输入。文档内容只以 Markdown 储存。
+> **从旧本地版迁移：** `markdown-live-local.markdown-live` 与商店版是不同扩展。安装新版后，请禁用或卸载旧版，避免入口重复。Markdown 文件、图片和 `markdownLive.*` 设置无需转换。详见[安装与使用](docs/usage.md)。
 
-实际验证结果与限制见 [VALIDATION.md](VALIDATION.md)。
+当前商店版与源码版本为 **0.2.4**。[GitHub Releases](https://github.com/zJay26/vscode-markdown-preview/releases/latest) 目前保留历史 **0.2.0**；获取当前版本请优先使用商店，或[从源码构建 VSIX](docs/development.md)。
 
-## 许可
+## 常用写作能力
 
-MIT。使用的开源依赖遵循各自许可证；打包保留依赖的许可证声明。
+| 你想做的事 | Markdown Live 的方式 |
+| --- | --- |
+| **直接写、直接改** | 正文、标题、列表、引用、任务清单；选区工具栏与 `/` 插入菜单 |
+| **按需查看源码** | 段落内展开 CodeMirror，或定位到原生 Markdown 编辑器 |
+| **整理技术笔记** | KaTeX 公式、Mermaid 图表、GFM 表格、脚注，以及 Pandoc Figure / Caption 容器 |
+| **放入图片** | 粘贴截图或拖入图片，自动写入文档旁的资源目录并插入相对路径 |
+| **在长文中移动** | 章节大纲、全文查找替换、专注模式、字词统计与阅读进度 |
+| **调整阅读尺寸** | `Ctrl` + 滚轮缩放正文至 50%–200%，工具栏保持原大小 |
+| **继续原有工作流** | VS Code 原生保存与撤销；外部修改同步，重叠冲突保留待恢复草稿 |
+
+完整操作、快捷键和四项配置见[使用指南](docs/usage.md)。
+
+## 文件仍由你掌握
+
+- **普通 Markdown**：不引入专有文档格式。局部文本补丁尽量保留未编辑部分的标记、空行、注释、引用定义和换行格式。
+- **编辑可离线**：字体、脚本、公式与图表渲染库随扩展打包。文档引用的远程图片仍需要网络。
+- **图片放在文档旁**：默认保存到 `assets/<文档名>/`；Remote WSL 中写入 WSL 文件系统。
+- **冲突保留草稿**：非重叠修改尝试合并，重叠时停止提交，并提供比较与恢复入口。
+
+## 当前边界
+
+Markdown Live 面向笔记、技术文档和研究记录。表格遵循 Markdown 的结构，不支持合并单元格；不提供 PDF / Word 导出、BibTeX / Zotero 集成、图表拖拽设计。Pandoc 容器支持内容编辑及 Figure / Caption 排版，不读取 Word 模板样式。
+
+自动化验证记录见 [VALIDATION.md](VALIDATION.md)。实体中文输入法验收仍待完成；0.2.4 未重新执行 Remote WSL 安装包验证。
+
+## 开发与参与
+
+需要 **Node.js 22+**、npm 与 **VS Code 1.96+**。
+
+```sh
+git clone https://github.com/zJay26/vscode-markdown-preview.git
+cd vscode-markdown-preview
+npm ci
+npm run dev
+```
+
+`npm run dev` 打开独立浏览器预览；它使用浏览器本地存储，不写入工作区文件。完整构建、测试和 VSIX 打包方法见[开发指南](docs/development.md)。
+
+**TypeScript · VS Code Custom Editor · Milkdown / ProseMirror · CodeMirror 6 · KaTeX · Mermaid**
+
+| 文档 | 内容 |
+| --- | --- |
+| [使用指南](docs/usage.md) | 安装、迁移、快捷键、兼容范围与配置 |
+| [开发指南](docs/development.md) | 本地开发、构建、测试和项目结构 |
+| [贡献指南](CONTRIBUTING.md) | 提交问题、参与修改与验证要求 |
+| [验证记录](VALIDATION.md) | 已执行的检查、环境和未验证部分 |
+| [更新记录](CHANGELOG.md) | 每个版本的变化 |
+
+欢迎通过 [Issues](https://github.com/zJay26/vscode-markdown-preview/issues/new/choose) 提交可复现的问题和具体使用场景。
+
+## 许可与致谢
+
+采用 [MIT License](LICENSE)。第三方依赖遵循各自许可证，生产包保留许可声明。感谢上述开源组件提供编辑、源码控制与排版基础。
+
+---
+
+<p align="center">
+  <strong>Made by <a href="https://github.com/zJay26">zJay</a></strong><br />
+  也可以看看 <a href="https://github.com/zJay26/zMatrix">zMatrix · 内容工作台</a> 与 <a href="https://github.com/zJay26/zClip">zClip · 本地视频剪辑</a>。
+</p>

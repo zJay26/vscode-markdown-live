@@ -1,0 +1,49 @@
+name: 问题反馈 / Bug report
+description: 提交可复现的编辑、渲染、保存或安装问题。
+title: "[Bug] "
+body:
+  - type: input
+    id: version
+    attributes:
+      label: 扩展与 VS Code 版本 / Versions
+      placeholder: "Markdown Live 0.2.4 / VS Code 1.96.3"
+    validations:
+      required: true
+  - type: dropdown
+    id: environment
+    attributes:
+      label: 运行环境 / Environment
+      options:
+        - Windows
+        - Remote WSL
+        - macOS
+        - Linux
+        - 独立浏览器预览 / Browser preview
+        - 其他 / Other
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 复现步骤 / Steps to reproduce
+      description: 请注明使用商店版、本地 VSIX 还是源码调试。
+      placeholder: "1. 打开文档……\n2. 选中文字……\n3. 执行……"
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: 预期与实际结果 / Expected and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: markdown
+    attributes:
+      label: 最小 Markdown 示例 / Minimal Markdown example
+      description: 请移除私人内容，保留能复现问题的语法。可在下方另附截图。
+      render: markdown
+  - type: textarea
+    id: details
+    attributes:
+      label: 截图与补充信息 / Screenshots and details
+      description: 保存问题请说明是否使用自动保存，以及是否有其他编辑器同时修改文件。
