@@ -2,7 +2,7 @@
 
 ## 0.2.5
 
-- 对外名称简化为 Markdown Live，作者信息保留在扩展详情中；扩展 ID `zJay.markdown-live-zjay`、命令 ID 和设置键不变。
+- 商店显示名称使用 Markdown Live by zJay（Markdown Live 已被占用）；README 和编辑器内名称简化为 Markdown Live。扩展 ID `zJay.markdown-live-zjay`、命令 ID 和设置键不变。
 - 重整中英文介绍，突出正文直接编辑、局部源码、公式与 Mermaid 图表，并添加三段清晰、带停顿的操作动图。
 - 更新仓库链接为 `zJay26/vscode-markdown-live`，补充后续发布与商店更新流程。
 

@@ -4,7 +4,7 @@
 
 测试日期：2026-09-27；Windows / VS Code 1.96.3、Node.js 24、Microsoft Edge。
 
-- 扩展显示名称、命令标题、编辑器标识统一为 Markdown Live；保持 `zJay.markdown-live-zjay`、命令 ID、设置键和编辑行为。
+- 命令标题和编辑器标识简化为 Markdown Live；商店拒绝已被占用的同名显示名称后，按用户选择使用 Markdown Live by zJay。保持 `zJay.markdown-live-zjay`、命令 ID、设置键和编辑行为。
 - TypeScript、42 项核心测试、40 项浏览器测试、生产构建和 9 项 Windows 宿主测试全部通过。浏览器回归使用独立端口 4195。
 - 三段动图为真实编辑界面逐帧截图，按逐字 0.16–0.24 秒与结果停顿合成；分别演示正文排版、局部源码、LaTeX 与 Mermaid。尺寸 1280 × 776，时长约 12.84 / 13.64 / 19.72 秒。已检查关键步骤画面和最终文档内容；原始帧及编码时间表记录在 `artifacts/demos/` 与 `docs/demo/manifest.json`。
 - 演示使用独立公开示例；正文和源码均以 22px 录制。源码字号放大仅存在于不打包的 `scripts/demo.html`，不修改生产样式；演示不是性能测量。
