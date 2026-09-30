@@ -44,7 +44,7 @@
   <img src="https://raw.githubusercontent.com/zJay26/vscode-markdown-live/main/docs/images/editor-light.png" alt="Markdown Live 静态预览：正文选区、大纲、公式、表格与任务清单" />
 </picture>
 
-<sub>静态截图来自 0.2.4，图标和编辑功能一致；新版显示名称已简化为 Markdown Live。</sub>
+<sub>静态截图来自 0.2.4，展示当时的图标与界面。当前图标已更新为保留原设计元素的 01 平面细化版，见页首。</sub>
 
 </details>
 

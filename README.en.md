@@ -44,7 +44,7 @@
   <img src="https://raw.githubusercontent.com/zJay26/vscode-markdown-live/main/docs/images/editor-light.png" alt="Markdown Live static preview: selected text, outline, math, a table and tasks" />
 </picture>
 
-<sub>Static screenshots show 0.2.4. The icon and editing features remain the same; the new display name is simply Markdown Live.</sub>
+<sub>Static screenshots show the icon and UI from 0.2.4. The current icon at the top of this page uses the selected 01 flat refinement, preserving the original design elements.</sub>
 
 </details>
 

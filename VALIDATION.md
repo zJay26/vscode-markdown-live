@@ -1,5 +1,14 @@
 # 验证记录
 
+## 0.2.8：统一使用 01 平面细化图标
+
+验证日期：2026-09-30；Windows、Microsoft Edge。此节记录发布前源码检查，发布及安装结果单独记录。
+
+- `media/markdown-live-icon.png` 直接复制自用户选定的 01 版，尺寸 1254 × 1254、915797 字节；SHA-256 为 `e16f0aff4ff515f4ed204f9321bec644deac52fb8bb9adfdea609f96326c3d63`，与候选原图一致。
+- 扩展清单、标题栏命令、Webview、浏览器 favicon、中英文 README 和演示页面共用该 PNG。移除无引用的旧版 M＋闪电 SVG 及其打包条目；历史截图、演示和发布记录保留原版本外观。
+- 图标替换后的生产构建与 3 项针对性界面回归通过，并已目视检查明暗主题截图中的新图标。发布前另行通过 TypeScript、42 项核心测试及完整 40 项 Playwright 浏览器回归，覆盖源码保留、公式、图表、Pandoc Div、明暗主题、窄屏、大纲、专注模式与缩放。
+- 版本更新为 0.2.8，扩展身份与编辑行为保持不变。最终安装包 SHA-256、包内图片校验、隔离安装、CI、Marketplace 状态和 Windows / Remote WSL 更新结果记录于本地 `artifacts/marketplace/verification-0.2.8.json`，以实际完成状态为准。本节不将源码和浏览器检查视为原生宿主或实体输入法验证。
+
 ## 0.2.7：单张连续演示与稳定输入光标
 
 验证日期：2026-09-27；Windows、Microsoft Edge，用户已确认最终审阅稿。
